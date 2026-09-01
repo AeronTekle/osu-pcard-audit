@@ -1,5 +1,14 @@
 # OSU P-card Audit Explorer
 
+## Live website
+
+[Open the public OSU P-card Audit Explorer](https://osu-pcard-audit-va4elrburh4fz5gendntwr.streamlit.app/)
+
+The live app includes a 2010–2014 audit overview, targeted description and
+vendor searches, downloadable evidence, and a protected natural-language query
+workflow. The overview and searches work without an API key. Natural-language
+questions require `OPENAI_API_KEY` in Streamlit's secret settings.
+
 This repository completes the P-card analytics mindset assignment:
 
 - `analysis_queries.sql` contains the SQLite views for Part II (Questions 1-14)
