@@ -13,7 +13,12 @@ import streamlit as st
 from openai import OpenAI
 from pydantic import BaseModel, Field
 
-from db_utils import get_years, run_readonly_query, search_transactions
+from db_utils import (
+    get_year_dashboard,
+    get_years,
+    run_readonly_query,
+    search_transactions,
+)
 
 
 ROOT = Path(__file__).resolve().parent
@@ -73,8 +78,8 @@ def question_to_sql(question: str) -> SQLAnswer:
     api_key = get_secret("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError(
-            "OPENAI_API_KEY is not configured. Add it to the hosting platform's "
-            "secret settings; never place it in the repository."
+            "OPENAI_API_KEY is not configured. Add it in Streamlit under "
+            "App settings > Secrets; never place it in the repository."
         )
 
     schema = """
@@ -117,7 +122,18 @@ def money(value: float) -> str:
     return f"${value:,.2f}"
 
 
-def show_search_results(total: int, frame: pd.DataFrame, label: str) -> None:
+@st.cache_data(show_spinner=False)
+def load_dashboard(year: int) -> tuple[dict, pd.DataFrame, pd.DataFrame]:
+    return get_year_dashboard(DB_PATH, year)
+
+
+def show_search_results(
+    total: int, frame: pd.DataFrame, label: str, keyword: str, year: int
+) -> None:
+    st.markdown(
+        f"### {label} results <span class='result-tag'>{year} · {keyword}</span>",
+        unsafe_allow_html=True,
+    )
     if total == 0:
         st.info(f"No {label.lower()} matches were found for the selected year.")
         return
@@ -125,19 +141,27 @@ def show_search_results(total: int, frame: pd.DataFrame, label: str) -> None:
     c1, c2, c3 = st.columns(3)
     c1.metric("Matching transactions", f"{total:,}")
     c2.metric("Displayed amount", money(float(frame["Amount"].sum())))
-    c3.metric("Cardholders", f"{frame['FullName'].nunique():,}")
+    c3.metric("Cardholders represented", f"{frame['FullName'].nunique():,}")
 
     if total > len(frame):
         st.caption(f"Showing the {len(frame):,} largest of {total:,} matching rows.")
 
-    monthly = frame.groupby("Month", as_index=False)["Amount"].sum().set_index("Month")
-    st.bar_chart(monthly, y="Amount", x_label="Month", y_label="Amount (USD)")
-    st.dataframe(frame, use_container_width=True, hide_index=True)
+    chart_data = frame.groupby("Month", as_index=False)["Amount"].sum().set_index("Month")
+    st.bar_chart(chart_data, y="Amount", x_label="Month", y_label="Amount (USD)")
+    st.dataframe(
+        frame,
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Amount": st.column_config.NumberColumn("Amount (USD)", format="$%.2f"),
+        },
+    )
     st.download_button(
-        "Download displayed results (CSV)",
+        "Download displayed results",
         frame.to_csv(index=False).encode("utf-8"),
-        file_name=f"{label.lower().replace(' ', '_')}_results.csv",
+        file_name=f"{label.lower().replace(' ', '_')}_{year}_{keyword}.csv",
         mime="text/csv",
+        icon=":material/download:",
     )
 
 
@@ -145,44 +169,289 @@ st.set_page_config(
     page_title="OSU P-card Audit Explorer",
     page_icon="🔎",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
 
 st.markdown(
     """
     <style>
-    .block-container {padding-top: 2rem; padding-bottom: 3rem;}
-    [data-testid="stMetric"] {background:#f5f7fb; border:1px solid #dbe2ea;
-        border-radius:12px; padding:14px;}
+    :root {
+        --ink: #17212b;
+        --muted: #5d6a78;
+        --line: #e5e9ee;
+        --soft: #f6f7f9;
+        --orange: #d73f09;
+        --orange-dark: #a92f05;
+    }
+    .stApp {background: #ffffff; color: var(--ink);}
+    .block-container {max-width: 1280px; padding-top: 1.4rem; padding-bottom: 4rem;}
+    [data-testid="stSidebar"] {background: #f7f8fa; border-right: 1px solid var(--line);}
+    [data-testid="stSidebar"] .block-container {padding-top: 1.8rem;}
+    [data-testid="stMetric"] {
+        background: #ffffff; border: 1px solid var(--line); border-radius: 16px;
+        padding: 18px 20px; box-shadow: 0 6px 22px rgba(23,33,43,.05);
+    }
+    [data-testid="stMetricLabel"] {color: var(--muted); font-weight: 650;}
+    [data-testid="stMetricValue"] {color: var(--ink); letter-spacing: -.035em;}
+    .hero {
+        position: relative; overflow: hidden; padding: 34px 38px; margin-bottom: 20px;
+        border-radius: 22px; color: white;
+        background: linear-gradient(120deg, #151d26 0%, #253341 68%, #d73f09 165%);
+        box-shadow: 0 16px 38px rgba(23,33,43,.16);
+    }
+    .hero:after {
+        content: ""; position: absolute; width: 280px; height: 280px; border-radius: 50%;
+        right: -95px; top: -155px; background: rgba(215,63,9,.34);
+    }
+    .hero .eyebrow {font-size: .76rem; font-weight: 800; letter-spacing: .14em; color: #ffb092;}
+    .hero h1 {font-size: 2.45rem; line-height: 1.08; margin: 11px 0 10px; letter-spacing: -.04em;}
+    .hero p {max-width: 760px; margin: 0; color: #dce3e9; font-size: 1.03rem; line-height: 1.55;}
+    .hero .badges {display: flex; gap: 9px; flex-wrap: wrap; margin-top: 21px;}
+    .hero .badge {
+        border: 1px solid rgba(255,255,255,.19); background: rgba(255,255,255,.08);
+        border-radius: 999px; padding: 6px 11px; color: #f5f7f9; font-size: .78rem;
+    }
+    .section-kicker {color: var(--orange); font-size: .76rem; font-weight: 800; letter-spacing: .12em;}
+    .result-tag {
+        display: inline-block; vertical-align: middle; margin-left: 7px; padding: 4px 9px;
+        border-radius: 999px; background: #fff0eb; color: var(--orange-dark); font-size: .72rem;
+    }
+    .review-note {
+        border-left: 4px solid var(--orange); background: #fff7f3; padding: 13px 16px;
+        border-radius: 0 10px 10px 0; color: #624035; font-size: .9rem; margin: 7px 0 18px;
+    }
+    .step-card {
+        min-height: 112px; border: 1px solid var(--line); border-radius: 14px;
+        padding: 16px 17px; background: var(--soft);
+    }
+    .step-card b {display: block; color: var(--ink); margin-bottom: 5px;}
+    .step-card span {color: var(--muted); font-size: .88rem; line-height: 1.45;}
+    .stTabs [data-baseweb="tab-list"] {gap: 8px; border-bottom: 1px solid var(--line);}
+    .stTabs [data-baseweb="tab"] {
+        height: 48px; padding: 0 18px; border-radius: 10px 10px 0 0; font-weight: 700;
+    }
+    .stTabs [aria-selected="true"] {color: var(--orange); background: #fff5f1;}
+    div.stButton > button, div.stDownloadButton > button {border-radius: 10px; font-weight: 700;}
+    div[data-testid="stForm"] {border: 1px solid var(--line); border-radius: 16px; padding: 20px;}
+    #MainMenu, footer {visibility: hidden;}
+    @media (max-width: 700px) {
+        .hero {padding: 26px 22px;}
+        .hero h1 {font-size: 1.9rem;}
+    }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-st.title("OSU P-card Audit Explorer")
-st.caption(
-    "A risk-screening tool for purchasing-card transactions. Flags are potential "
-    "exceptions and require supporting-document review before a conclusion is made."
+years = get_years(DB_PATH)
+with st.sidebar:
+    st.markdown("### Audit scope")
+    selected_year = st.selectbox("Reporting year", years, index=0)
+    st.success("Database connected", icon=":material/check_circle:")
+    st.caption(
+        "All analysis is performed through a read-only SQLite connection. "
+        "Search results are indicators for follow-up—not findings of misconduct."
+    )
+    st.divider()
+    st.markdown("**Suggested review terms**")
+    st.caption("Alcohol · Gift · Insurance · Membership · Gasoline · USPS · Post office")
+    st.link_button(
+        "View source on GitHub",
+        "https://github.com/AeronTekle/osu-pcard-audit",
+        use_container_width=True,
+        icon=":material/code:",
+    )
+
+st.markdown(
+    """
+    <div class="hero">
+      <div class="eyebrow">PURCHASING-CARD ANALYTICS</div>
+      <h1>OSU P-card Audit Explorer</h1>
+      <p>Explore purchasing activity, screen transactions for potential exceptions,
+      and ask audit questions in plain English. Built for evidence-led follow-up.</p>
+      <div class="badges">
+        <span class="badge">Read-only database</span>
+        <span class="badge">2010–2014 coverage</span>
+        <span class="badge">Downloadable evidence</span>
+      </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 
-ask_tab, dashboard_tab = st.tabs(
-    ["Ask the database", "Prohibited-purchase dashboard"]
+dashboard_tab, ask_tab = st.tabs(
+    ["Overview & risk search", "Ask the database"]
 )
+
+with dashboard_tab:
+    metrics, monthly, top_vendors = load_dashboard(selected_year)
+    st.markdown('<div class="section-kicker">EXECUTIVE OVERVIEW</div>', unsafe_allow_html=True)
+    st.subheader(f"{selected_year} purchasing activity")
+
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("Transactions", f"{metrics['transactions']:,}")
+    m2.metric("Total amount", money(metrics["total_amount"]))
+    m3.metric("Cardholders", f"{metrics['cardholders']:,}")
+    m4.metric("Vendors", f"{metrics['vendors']:,}")
+
+    st.markdown(
+        f"""
+        <div class="review-note"><b>Review snapshot:</b>
+        {metrics['high_value']:,} transactions exceed $5,000 and
+        {metrics['credits']:,} transactions have negative amounts. These are screening
+        signals only and should be evaluated with approvals, receipts, and business purpose.</div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    chart_col, vendor_col = st.columns([1.45, 1])
+    with chart_col:
+        st.markdown("#### Monthly purchasing amount")
+        st.caption("Use the monthly pattern to identify unusual peaks for follow-up.")
+        monthly_chart = monthly.set_index("Month")[["Amount"]]
+        st.bar_chart(monthly_chart, y="Amount", x_label="Month", y_label="Amount (USD)")
+    with vendor_col:
+        st.markdown("#### Top vendors by amount")
+        st.caption("The ten vendors with the highest total amount in the selected year.")
+        st.dataframe(
+            top_vendors,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Amount": st.column_config.NumberColumn("Amount (USD)", format="$%.2f"),
+            },
+        )
+
+    st.divider()
+    st.markdown('<div class="section-kicker">TARGETED SCREENING</div>', unsafe_allow_html=True)
+    st.subheader("Search for possible prohibited purchases")
+    st.write(
+        "Search descriptions and vendors separately. Review the cardholder, date, "
+        "merchant category, business description, and amount before deciding whether "
+        "supporting evidence is required."
+    )
+
+    description_col, vendor_search_col = st.columns(2)
+    with description_col:
+        with st.form("description_form"):
+            st.markdown("#### Description search")
+            st.caption("Searches only the transaction description field.")
+            description_keyword = st.text_input(
+                "Description keyword", placeholder="Example: alcohol"
+            )
+            description_submit = st.form_submit_button(
+                "Search descriptions", type="primary", icon=":material/search:"
+            )
+    with vendor_search_col:
+        with st.form("vendor_form"):
+            st.markdown("#### Vendor search")
+            st.caption("Searches only the merchant/vendor field.")
+            vendor_keyword = st.text_input(
+                "Vendor keyword", placeholder="Example: post office"
+            )
+            vendor_submit = st.form_submit_button(
+                "Search vendors", type="primary", icon=":material/search:"
+            )
+
+    if description_submit:
+        if not description_keyword.strip():
+            st.warning("Enter a description keyword first.")
+        else:
+            count, rows = search_transactions(
+                DB_PATH,
+                year=selected_year,
+                field="Description",
+                keyword=description_keyword,
+            )
+            st.session_state["search_result"] = (
+                selected_year,
+                count,
+                rows,
+                "Description",
+                description_keyword.strip(),
+            )
+    if vendor_submit:
+        if not vendor_keyword.strip():
+            st.warning("Enter a vendor keyword first.")
+        else:
+            count, rows = search_transactions(
+                DB_PATH,
+                year=selected_year,
+                field="Vendor",
+                keyword=vendor_keyword,
+            )
+            st.session_state["search_result"] = (
+                selected_year,
+                count,
+                rows,
+                "Vendor",
+                vendor_keyword.strip(),
+            )
+
+    if "search_result" in st.session_state:
+        result_year, count, rows, label, keyword = st.session_state["search_result"]
+        if result_year == selected_year:
+            st.divider()
+            show_search_results(count, rows, label, keyword, result_year)
 
 with ask_tab:
-    st.subheader("Ask a question in plain English")
+    st.markdown('<div class="section-kicker">NATURAL-LANGUAGE ANALYSIS</div>', unsafe_allow_html=True)
+    st.subheader("Ask an audit question in plain English")
     st.write(
-        "Enter an audit question. The app converts it to a read-only SQLite query, "
-        "checks the query, and returns at most 500 rows."
+        "The app translates your question into one read-only SQLite query, validates "
+        "the query, and returns no more than 500 displayed rows."
     )
-    st.caption(
-        "Example: Which five vendors received the highest total amount in 2014?"
-    )
+
+    step1, step2, step3 = st.columns(3)
+    with step1:
+        st.markdown(
+            '<div class="step-card"><b>1 · Ask</b><span>Write a focused question about vendors, cardholders, amounts, or timing.</span></div>',
+            unsafe_allow_html=True,
+        )
+    with step2:
+        st.markdown(
+            '<div class="step-card"><b>2 · Validate</b><span>The generated SQL is restricted to a read-only SELECT or WITH query.</span></div>',
+            unsafe_allow_html=True,
+        )
+    with step3:
+        st.markdown(
+            '<div class="step-card"><b>3 · Review</b><span>Inspect the result and download the displayed evidence for follow-up.</span></div>',
+            unsafe_allow_html=True,
+        )
+
+    st.write("")
+    api_ready = bool(get_secret("OPENAI_API_KEY"))
+    if api_ready:
+        st.success("AI query mode is ready.", icon=":material/check_circle:")
+    else:
+        st.warning(
+            "AI query mode needs an OPENAI_API_KEY in Streamlit App settings > Secrets. "
+            "The overview and risk searches remain fully available."
+        )
+
+    examples = [
+        "Write your own question",
+        "Which five vendors received the highest total amount in 2014?",
+        "Show total 2014 spending by employee, largest first.",
+        "Which 2014 transactions exceeded 5,000 dollars?",
+        "Summarize monthly purchasing amounts for 2014.",
+    ]
+    selected_example = st.selectbox("Start with an example", examples)
+    default_question = "" if selected_example == examples[0] else selected_example
+
     with st.form("natural_language_form"):
         question = st.text_area(
             "Audit question",
-            placeholder="Show total 2014 spending by employee, largest first.",
+            value=default_question,
+            placeholder="Example: Show the ten largest transactions in 2014.",
+            height=110,
         )
-        ask = st.form_submit_button("Run question", type="primary")
+        ask = st.form_submit_button(
+            "Run question",
+            type="primary",
+            disabled=not api_ready,
+            icon=":material/play_arrow:",
+        )
 
     if ask:
         if not question.strip():
@@ -198,63 +467,11 @@ with ask_tab:
                     st.code(executed_sql, language="sql")
                 st.dataframe(result, use_container_width=True, hide_index=True)
                 st.download_button(
-                    "Download answer (CSV)",
+                    "Download answer",
                     result.to_csv(index=False).encode("utf-8"),
                     file_name="natural_language_answer.csv",
                     mime="text/csv",
+                    icon=":material/download:",
                 )
             except Exception as exc:
                 st.error(f"The question could not be completed: {exc}")
-
-with dashboard_tab:
-    st.subheader("Search for possible prohibited purchases")
-    st.write(
-        "Choose a year and search the description or vendor separately. Try terms "
-        "such as alcohol, gift, insurance, membership, gasoline, USPS, or post office. "
-        "Review the transaction, cardholder, date, description, vendor and MCC before "
-        "deciding whether follow-up evidence is needed."
-    )
-
-    years = get_years(DB_PATH)
-    selected_year = st.selectbox("Year", years, index=0)
-
-    st.markdown("#### Description search")
-    st.caption("Searches only the transaction Description field.")
-    with st.form("description_form"):
-        description_keyword = st.text_input(
-            "Description keyword", placeholder="Example: alcohol"
-        )
-        description_submit = st.form_submit_button(
-            "Search descriptions", type="primary"
-        )
-    if description_submit:
-        if not description_keyword.strip():
-            st.warning("Enter a description keyword first.")
-        else:
-            count, rows = search_transactions(
-                DB_PATH,
-                year=selected_year,
-                field="Description",
-                keyword=description_keyword,
-            )
-            show_search_results(count, rows, "Description")
-
-    st.divider()
-    st.markdown("#### Vendor search")
-    st.caption("Searches only the Vendor field.")
-    with st.form("vendor_form"):
-        vendor_keyword = st.text_input(
-            "Vendor keyword", placeholder="Example: post office"
-        )
-        vendor_submit = st.form_submit_button("Search vendors", type="primary")
-    if vendor_submit:
-        if not vendor_keyword.strip():
-            st.warning("Enter a vendor keyword first.")
-        else:
-            count, rows = search_transactions(
-                DB_PATH,
-                year=selected_year,
-                field="Vendor",
-                keyword=vendor_keyword,
-            )
-            show_search_results(count, rows, "Vendor")
