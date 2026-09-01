@@ -30,6 +30,63 @@ def get_years(db_path: Path) -> list[int]:
     return [int(row[0]) for row in rows]
 
 
+def get_year_dashboard(
+    db_path: Path, year: int
+) -> tuple[dict[str, float | int], pd.DataFrame, pd.DataFrame]:
+    """Return overview metrics, monthly spend, and top vendors for one year."""
+    with connect_read_only(db_path) as connection:
+        row = connection.execute(
+            """
+            SELECT
+                COUNT(*) AS transactions,
+                COALESCE(SUM(Amount), 0) AS total_amount,
+                COUNT(DISTINCT FullName) AS cardholders,
+                COUNT(DISTINCT Vendor) AS vendors,
+                SUM(CASE WHEN Amount > 5000 THEN 1 ELSE 0 END) AS high_value,
+                SUM(CASE WHEN Amount < 0 THEN 1 ELSE 0 END) AS credits
+            FROM pcards
+            WHERE Year = ?
+            """,
+            (year,),
+        ).fetchone()
+        monthly = pd.read_sql_query(
+            """
+            SELECT Month, COUNT(*) AS Transactions, SUM(Amount) AS Amount
+            FROM pcards
+            WHERE Year = ?
+            GROUP BY Month
+            ORDER BY Month
+            """,
+            connection,
+            params=(year,),
+        )
+        top_vendors = pd.read_sql_query(
+            """
+            SELECT
+                COALESCE(NULLIF(TRIM(Vendor), ''), 'Unknown vendor') AS Vendor,
+                COUNT(*) AS Transactions,
+                SUM(Amount) AS Amount
+            FROM pcards
+            WHERE Year = ?
+            GROUP BY COALESCE(NULLIF(TRIM(Vendor), ''), 'Unknown vendor')
+            ORDER BY Amount DESC
+            LIMIT 10
+            """,
+            connection,
+            params=(year,),
+        )
+
+    metrics = {
+        "transactions": int(row[0] or 0),
+        "total_amount": float(row[1] or 0),
+        "cardholders": int(row[2] or 0),
+        "vendors": int(row[3] or 0),
+        "high_value": int(row[4] or 0),
+        "credits": int(row[5] or 0),
+    }
+    return metrics, monthly, top_vendors
+
+
 def search_transactions(
     db_path: Path,
     *,
