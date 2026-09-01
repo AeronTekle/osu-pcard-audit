@@ -1,0 +1,1838 @@
+{
+  "qry_T2_Question1": {
+    "row_count": 127,
+    "first_10_rows": [
+      {
+        "FullName": "Employee 51914657",
+        "TotalAmount": 1595302.32
+      },
+      {
+        "FullName": "Employee B1FA2F0D",
+        "TotalAmount": 1182094.86
+      },
+      {
+        "FullName": "Employee 688E3D92",
+        "TotalAmount": 627608.56
+      },
+      {
+        "FullName": "Employee D8983D5C",
+        "TotalAmount": 437479.84
+      },
+      {
+        "FullName": "Employee C53C5224",
+        "TotalAmount": 392761.34
+      },
+      {
+        "FullName": "Employee F0457896",
+        "TotalAmount": 340329.11
+      },
+      {
+        "FullName": "Employee F836BF32",
+        "TotalAmount": 320016.94
+      },
+      {
+        "FullName": "Employee 770E92ED",
+        "TotalAmount": 282056.99
+      },
+      {
+        "FullName": "Employee A1DDFECC",
+        "TotalAmount": 275898.62
+      },
+      {
+        "FullName": "Employee 44CE932F",
+        "TotalAmount": 242938.28
+      }
+    ]
+  },
+  "qry_T2_Question2": {
+    "row_count": 457,
+    "first_10_rows": [
+      {
+        "FullName": "Employee 51914657",
+        "Month": 1,
+        "TotalAmount": 149700.14
+      },
+      {
+        "FullName": "Employee B1FA2F0D",
+        "Month": 1,
+        "TotalAmount": 112598.39
+      },
+      {
+        "FullName": "Employee 688E3D92",
+        "Month": 1,
+        "TotalAmount": 110190.56
+      },
+      {
+        "FullName": "Employee D8983D5C",
+        "Month": 1,
+        "TotalAmount": 72128.93
+      },
+      {
+        "FullName": "Employee C53C5224",
+        "Month": 1,
+        "TotalAmount": 37935.56
+      },
+      {
+        "FullName": "Employee 465E5080",
+        "Month": 1,
+        "TotalAmount": 28064.54
+      },
+      {
+        "FullName": "Employee 223D3DE1",
+        "Month": 1,
+        "TotalAmount": 22640.32
+      },
+      {
+        "FullName": "Employee 44CE932F",
+        "Month": 1,
+        "TotalAmount": 21874.01
+      },
+      {
+        "FullName": "Employee F836BF32",
+        "Month": 1,
+        "TotalAmount": 20537.59
+      },
+      {
+        "FullName": "Employee 5BA61357",
+        "Month": 1,
+        "TotalAmount": 19751.03
+      }
+    ]
+  },
+  "qry_T2_Question3": {
+    "row_count": 33,
+    "first_10_rows": [
+      {
+        "Amount": 29731.61,
+        "FullName": "Employee 241EA6B4",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "OEC OTIS ELEVATOR CO",
+        "TransactionDate": "8/18/2014 0:00:00",
+        "PostedDate": "8/19/2014 0:00:00",
+        "MCC": "DIRCT MARKETING/DIRCT MARKETERS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 27657.55,
+        "FullName": "Employee 0E3DD9FC",
+        "Description": "ROOM CHARGES",
+        "Vendor": "WINGATE MANHATTAN",
+        "TransactionDate": "5/22/2014 0:00:00",
+        "PostedDate": "5/23/2014 0:00:00",
+        "MCC": "LODGING--HOTELS,MOTELS,AND RESORTS"
+      },
+      {
+        "Amount": 22764.84,
+        "FullName": "Employee 0E3DD9FC",
+        "Description": "ROOM CHARGES",
+        "Vendor": "HAMPTON INN & SUITES CRN",
+        "TransactionDate": "5/23/2014 0:00:00",
+        "PostedDate": "5/26/2014 0:00:00",
+        "MCC": "HAMPTON INNS"
+      },
+      {
+        "Amount": 21243.93,
+        "FullName": "Employee 0E3DD9FC",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "MAGDALENE COLLEGE",
+        "TransactionDate": "9/8/2014 0:00:00",
+        "PostedDate": "9/9/2014 0:00:00",
+        "MCC": "BUSINESS SERVICES NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 19233.28,
+        "FullName": "Employee 302B04AF",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "COCKRELL EYECARE CENTER",
+        "TransactionDate": "12/24/2014 0:00:00",
+        "PostedDate": "12/26/2014 0:00:00",
+        "MCC": "OPTICIANS AND DISPENSING"
+      },
+      {
+        "Amount": 16517.2,
+        "FullName": "Employee 0E3DD9FC",
+        "Description": "AIR TRAVEL",
+        "Vendor": "SOUTHWES    5262393866444",
+        "TransactionDate": "8/28/2014 0:00:00",
+        "PostedDate": "9/1/2014 0:00:00",
+        "MCC": "SOUTHWEST AIRLINES"
+      },
+      {
+        "Amount": 15327.36,
+        "FullName": "Employee 7A1AD2BE",
+        "Description": "ROOM CHARGES",
+        "Vendor": "HILTON BOSTON DOWNTOWN",
+        "TransactionDate": "9/24/2014 0:00:00",
+        "PostedDate": "9/26/2014 0:00:00",
+        "MCC": "HILTON HOTELS"
+      },
+      {
+        "Amount": 13186.64,
+        "FullName": "Employee D45966A2",
+        "Description": "ROOM CHARGES",
+        "Vendor": "ROWN NYC FD",
+        "TransactionDate": "8/1/2014 0:00:00",
+        "PostedDate": "8/4/2014 0:00:00",
+        "MCC": "LODGING--HOTELS,MOTELS,AND RESORTS"
+      },
+      {
+        "Amount": 12600.0,
+        "FullName": "Employee 241EA6B4",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "TLC PAINTING",
+        "TransactionDate": "1/24/2014 0:00:00",
+        "PostedDate": "1/27/2014 0:00:00",
+        "MCC": "SPECIAL TRADE CONTRACTORS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 12380.0,
+        "FullName": "Employee 241EA6B4",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "AABB-AMER. ASSO. BLOOD",
+        "TransactionDate": "4/4/2014 0:00:00",
+        "PostedDate": "4/7/2014 0:00:00",
+        "MCC": "MEMBERSHIP ORGANIZATIONS--NOT ELSEWHERE CLASSIFIED"
+      }
+    ]
+  },
+  "qry_T2_Question4": {
+    "row_count": 269,
+    "first_10_rows": [
+      {
+        "Amount": 2790.0,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "HVAC NMB",
+        "Vendor": "R.B. AKINS COMPANY",
+        "TransactionDate": "1/6/2014 0:00:00",
+        "PostedDate": "1/8/2014 0:00:00",
+        "MCC": "CABLE, SATELLITE, AND OTHER PAY TELEVISION AND RADIO SERVICES"
+      },
+      {
+        "Amount": 1465.0,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "HVAC NMB",
+        "Vendor": "R.B. AKINS COMPANY",
+        "TransactionDate": "1/6/2014 0:00:00",
+        "PostedDate": "1/8/2014 0:00:00",
+        "MCC": "CABLE, SATELLITE, AND OTHER PAY TELEVISION AND RADIO SERVICES"
+      },
+      {
+        "Amount": 795.0,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "HVAC NMB",
+        "Vendor": "R.B. AKINS COMPANY",
+        "TransactionDate": "1/6/2014 0:00:00",
+        "PostedDate": "1/8/2014 0:00:00",
+        "MCC": "CABLE, SATELLITE, AND OTHER PAY TELEVISION AND RADIO SERVICES"
+      },
+      {
+        "Amount": 114.0,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "HVAC NMB",
+        "Vendor": "R.B. AKINS COMPANY",
+        "TransactionDate": "1/6/2014 0:00:00",
+        "PostedDate": "1/8/2014 0:00:00",
+        "MCC": "CABLE, SATELLITE, AND OTHER PAY TELEVISION AND RADIO SERVICES"
+      },
+      {
+        "Amount": 4309.09,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "AUTOMATED BUILDNG SYSTEMS",
+        "TransactionDate": "1/8/2014 0:00:00",
+        "PostedDate": "1/9/2014 0:00:00",
+        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+      },
+      {
+        "Amount": 1521.85,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "AUTOMATED BUILDNG SYSTEMS",
+        "TransactionDate": "1/8/2014 0:00:00",
+        "PostedDate": "1/9/2014 0:00:00",
+        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+      },
+      {
+        "Amount": 232.36,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "AUTOMATED BUILDNG SYSTEMS",
+        "TransactionDate": "1/8/2014 0:00:00",
+        "PostedDate": "1/9/2014 0:00:00",
+        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+      },
+      {
+        "Amount": 3334.0,
+        "FullName": "Employee 51914657",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "OKLAHOMA CONTRACTORS SUP",
+        "TransactionDate": "1/16/2014 0:00:00",
+        "PostedDate": "1/20/2014 0:00:00",
+        "MCC": "CONSTRUCTION MATERIALS NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 936.0,
+        "FullName": "Employee 51914657",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "OKLAHOMA CONTRACTORS SUP",
+        "TransactionDate": "1/16/2014 0:00:00",
+        "PostedDate": "1/20/2014 0:00:00",
+        "MCC": "CONSTRUCTION MATERIALS NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 860.0,
+        "FullName": "Employee 51914657",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "OKLAHOMA CONTRACTORS SUP",
+        "TransactionDate": "1/16/2014 0:00:00",
+        "PostedDate": "1/20/2014 0:00:00",
+        "MCC": "CONSTRUCTION MATERIALS NOT ELSEWHERE CLASSIFIED"
+      }
+    ]
+  },
+  "qry_T2_Question5": {
+    "row_count": 48,
+    "first_10_rows": [
+      {
+        "Amount": 2249.6,
+        "FullName": "Employee 51914657",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "EEI",
+        "TransactionDate": "1/3/2014 0:00:00",
+        "PostedDate": "1/6/2014 0:00:00",
+        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+      },
+      {
+        "Amount": 3879.0,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "EEI",
+        "TransactionDate": "1/3/2014 0:00:00",
+        "PostedDate": "1/6/2014 0:00:00",
+        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+      },
+      {
+        "Amount": 3740.0,
+        "FullName": "Employee 58A802EC",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "AFLV",
+        "TransactionDate": "1/10/2014 0:00:00",
+        "PostedDate": "1/13/2014 0:00:00",
+        "MCC": "CIVIC,SOCIAL AND FRATERNAL ASSOCIATIONS"
+      },
+      {
+        "Amount": 3195.0,
+        "FullName": "Employee A35AA276",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "AFLV",
+        "TransactionDate": "1/10/2014 0:00:00",
+        "PostedDate": "1/13/2014 0:00:00",
+        "MCC": "CIVIC,SOCIAL AND FRATERNAL ASSOCIATIONS"
+      },
+      {
+        "Amount": 2544.07,
+        "FullName": "Employee 0D23D37B",
+        "Description": "EOS 6D DGTL CAM w/24-105mm Ea|EOS 6D DIGITAL CAM w",
+        "Vendor": "B & H PHOTO-VIDEO.COM",
+        "TransactionDate": "2/13/2014 0:00:00",
+        "PostedDate": "2/14/2014 0:00:00",
+        "MCC": "DIRCT MARKETING/DIRCT MARKETERS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 2544.07,
+        "FullName": "Employee 756042F4",
+        "Description": "EOS 6D DGTL CAM w/24-105mm Ea|EOS 6D DIGITAL CAM w",
+        "Vendor": "B & H PHOTO-VIDEO.COM",
+        "TransactionDate": "2/13/2014 0:00:00",
+        "PostedDate": "2/14/2014 0:00:00",
+        "MCC": "DIRCT MARKETING/DIRCT MARKETERS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 2973.0,
+        "FullName": "Employee 51914657",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "EEI",
+        "TransactionDate": "2/14/2014 0:00:00",
+        "PostedDate": "2/17/2014 0:00:00",
+        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+      },
+      {
+        "Amount": 3196.0,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "EEI",
+        "TransactionDate": "2/14/2014 0:00:00",
+        "PostedDate": "2/17/2014 0:00:00",
+        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+      },
+      {
+        "Amount": 4999.35,
+        "FullName": "Employee 51914657",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "THE LEE COMPANY",
+        "TransactionDate": "3/19/2014 0:00:00",
+        "PostedDate": "3/20/2014 0:00:00",
+        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+      },
+      {
+        "Amount": 503.04,
+        "FullName": "Employee C53C5224",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "THE LEE COMPANY",
+        "TransactionDate": "3/19/2014 0:00:00",
+        "PostedDate": "3/20/2014 0:00:00",
+        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+      }
+    ]
+  },
+  "qry_T2_Question6": {
+    "row_count": 122,
+    "first_10_rows": [
+      {
+        "Amount": 4883.77,
+        "FullName": "Employee 223167E4",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "GRIGSBY'S CARPET SHOWROOM",
+        "TransactionDate": "1/6/2014 0:00:00",
+        "PostedDate": "1/8/2014 0:00:00",
+        "MCC": "FURNITURE,HOME FURNISHINGS AND EQUIPMENT STORES"
+      },
+      {
+        "Amount": 554.22,
+        "FullName": "Employee 223167E4",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "L & M OFFICE FURNITURE IN",
+        "TransactionDate": "1/6/2014 0:00:00",
+        "PostedDate": "1/8/2014 0:00:00",
+        "MCC": "COMMERCIAL FURNITURE"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee D8983D5C",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "ACADEMY OF NUTRI & DIET",
+        "TransactionDate": "1/16/2014 0:00:00",
+        "PostedDate": "1/17/2014 0:00:00",
+        "MCC": "MEMBERSHIP ORGANIZATIONS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 3775.0,
+        "FullName": "Employee D8983D5C",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "SQ  DON-CO PLUMBING",
+        "TransactionDate": "1/16/2014 0:00:00",
+        "PostedDate": "1/17/2014 0:00:00",
+        "MCC": "PROFESSIONAL SERVICES NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 2789.0,
+        "FullName": "Employee D8983D5C",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "SAGE PUBLICATIONS",
+        "TransactionDate": "2/4/2014 0:00:00",
+        "PostedDate": "2/5/2014 0:00:00",
+        "MCC": "NEWS DEALERS AND NEWSSTANDS"
+      },
+      {
+        "Amount": 3250.0,
+        "FullName": "Employee D8983D5C",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "SQ  ARTISAN WINDOW CLEANI",
+        "TransactionDate": "2/4/2014 0:00:00",
+        "PostedDate": "2/5/2014 0:00:00",
+        "MCC": "MISCELLANEOUS PERSONAL SERVICES--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 1BCC5E9A",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "I2E INC",
+        "TransactionDate": "2/14/2014 0:00:00",
+        "PostedDate": "2/17/2014 0:00:00",
+        "MCC": "CHARITABLE AND SOCIAL SERVICE ORGANIZATIONS"
+      },
+      {
+        "Amount": 2.8,
+        "FullName": "Employee 1BCC5E9A",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "PIKEPASS RECYCLING",
+        "TransactionDate": "2/14/2014 0:00:00",
+        "PostedDate": "2/17/2014 0:00:00",
+        "MCC": "TOLLS AND BRIDGE FEES"
+      },
+      {
+        "Amount": 350.0,
+        "FullName": "Employee 302B04AF",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "ACADEMIC IMPRESSIONS INC",
+        "TransactionDate": "2/18/2014 0:00:00",
+        "PostedDate": "2/19/2014 0:00:00",
+        "MCC": "SCHOOLS AND EDUCATIONAL SERVICES NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 4837.56,
+        "FullName": "Employee 302B04AF",
+        "Description": "ROOM CHARGES",
+        "Vendor": "HYATT PLACE SAN ANTONIO/W",
+        "TransactionDate": "2/18/2014 0:00:00",
+        "PostedDate": "2/20/2014 0:00:00",
+        "MCC": "HYATT PLACE"
+      }
+    ]
+  },
+  "qry_T2_Question7": {
+    "row_count": 244,
+    "first_10_rows": [
+      {
+        "Amount": 93.79,
+        "FullName": "Employee 131EED76",
+        "Description": "ROOM CHARGES",
+        "Vendor": "HOLIDAY INNS",
+        "TransactionDate": "10/10/2014 0:00:00",
+        "PostedDate": "10/13/2014 0:00:00",
+        "MCC": "HOLIDAY INNS"
+      },
+      {
+        "Amount": 112.62,
+        "FullName": "Employee 131EED76",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "MI COCINA     00002220",
+        "TransactionDate": "10/10/2014 0:00:00",
+        "PostedDate": "10/13/2014 0:00:00",
+        "MCC": "EATING PLACES AND RESTAURANTS"
+      },
+      {
+        "Amount": 6.67,
+        "FullName": "Employee 143A2323",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "CHICK-FIL-A #01973",
+        "TransactionDate": "3/8/2014 0:00:00",
+        "PostedDate": "3/10/2014 0:00:00",
+        "MCC": "FAST FOOD RESTAURANTS"
+      },
+      {
+        "Amount": 15.0,
+        "FullName": "Employee 143A2323",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "JIMMY JOHNS # 563",
+        "TransactionDate": "3/8/2014 0:00:00",
+        "PostedDate": "3/10/2014 0:00:00",
+        "MCC": "FAST FOOD RESTAURANTS"
+      },
+      {
+        "Amount": 35.0,
+        "FullName": "Employee 143A2323",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "MCALISTER'S DELI 710",
+        "TransactionDate": "3/8/2014 0:00:00",
+        "PostedDate": "3/10/2014 0:00:00",
+        "MCC": "FAST FOOD RESTAURANTS"
+      },
+      {
+        "Amount": 103.95,
+        "FullName": "Employee 143A2323",
+        "Description": "ROOM CHARGES",
+        "Vendor": "MICROTEL INN",
+        "TransactionDate": "3/8/2014 0:00:00",
+        "PostedDate": "3/10/2014 0:00:00",
+        "MCC": "MICROTEL INN AND SUITES"
+      },
+      {
+        "Amount": 103.95,
+        "FullName": "Employee 143A2323",
+        "Description": "ROOM CHARGES",
+        "Vendor": "MICROTEL INN",
+        "TransactionDate": "3/8/2014 0:00:00",
+        "PostedDate": "3/10/2014 0:00:00",
+        "MCC": "MICROTEL INN AND SUITES"
+      },
+      {
+        "Amount": 103.95,
+        "FullName": "Employee 143A2323",
+        "Description": "ROOM CHARGES",
+        "Vendor": "MICROTEL INN",
+        "TransactionDate": "3/8/2014 0:00:00",
+        "PostedDate": "3/10/2014 0:00:00",
+        "MCC": "MICROTEL INN AND SUITES"
+      },
+      {
+        "Amount": 103.95,
+        "FullName": "Employee 143A2323",
+        "Description": "ROOM CHARGES",
+        "Vendor": "MICROTEL INN",
+        "TransactionDate": "3/8/2014 0:00:00",
+        "PostedDate": "3/10/2014 0:00:00",
+        "MCC": "MICROTEL INN AND SUITES"
+      },
+      {
+        "Amount": 103.95,
+        "FullName": "Employee 143A2323",
+        "Description": "ROOM CHARGES",
+        "Vendor": "MICROTEL INN",
+        "TransactionDate": "3/8/2014 0:00:00",
+        "PostedDate": "3/10/2014 0:00:00",
+        "MCC": "MICROTEL INN AND SUITES"
+      }
+    ]
+  },
+  "qry_T2_Question8": {
+    "row_count": 39,
+    "first_10_rows": [
+      {
+        "Amount": 1673.5,
+        "FullName": "Employee 4539161E",
+        "Description": "Regular Unleaded 086 Octan G|Diesel Dyed Non0Tax 0",
+        "Vendor": "HARRIS OIL CO",
+        "TransactionDate": "4/16/2014 0:00:00",
+        "PostedDate": "4/17/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 1476.15,
+        "FullName": "Employee 4539161E",
+        "Description": "Regular Unleaded 086 Octan G|Diesel Dyed Non0Tax 0",
+        "Vendor": "HARRIS OIL CO",
+        "TransactionDate": "10/27/2014 0:00:00",
+        "PostedDate": "10/28/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 1308.85,
+        "FullName": "Employee 4539161E",
+        "Description": "Regular Unleaded 086 Octan G|Diesel Dyed Non0Tax 0",
+        "Vendor": "HARRIS OIL CO",
+        "TransactionDate": "6/11/2014 0:00:00",
+        "PostedDate": "6/12/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 1233.1,
+        "FullName": "Employee 4539161E",
+        "Description": "Regular Unleaded 086 Octan G|Diesel Dyed Non0Tax 0",
+        "Vendor": "HARRIS OIL CO",
+        "TransactionDate": "7/16/2014 0:00:00",
+        "PostedDate": "7/17/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 1093.07,
+        "FullName": "Employee 4539161E",
+        "Description": "Regular Unleaded 086 Octan G|Diesel Dyed Non0Tax 0",
+        "Vendor": "HARRIS OIL CO",
+        "TransactionDate": "8/29/2014 0:00:00",
+        "PostedDate": "9/1/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 139.62,
+        "FullName": "Employee 8E809FA8",
+        "Description": "Merchandise General EA|Tax 4 EA",
+        "Vendor": "ONCUE EXPRESS 9",
+        "TransactionDate": "3/31/2014 0:00:00",
+        "PostedDate": "4/1/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 111.0,
+        "FullName": "Employee E1D414BE",
+        "Description": "Sin and Syntax: How to Cra PCE|Consumer Culture: H",
+        "Vendor": "Amazon.com",
+        "TransactionDate": "1/16/2014 0:00:00",
+        "PostedDate": "1/17/2014 0:00:00",
+        "MCC": "BOOK STORES"
+      },
+      {
+        "Amount": 84.74,
+        "FullName": "Employee 7816B9B3",
+        "Description": "CEFOTAXIME SODIUM SALT EA",
+        "Vendor": "VWR INTERNATIONAL INC",
+        "TransactionDate": "8/22/2014 0:00:00",
+        "PostedDate": "8/22/2014 0:00:00",
+        "MCC": "DENTAL/LABORATORY/MEDICAL/OPHTHALMIC HOSP EQIP AND SUP."
+      },
+      {
+        "Amount": 84.74,
+        "FullName": "Employee 77F7EE08",
+        "Description": "CEFOTAXIME SODIUM SALT EA",
+        "Vendor": "VWR INTERNATIONAL INC",
+        "TransactionDate": "11/26/2014 0:00:00",
+        "PostedDate": "11/26/2014 0:00:00",
+        "MCC": "DENTAL/LABORATORY/MEDICAL/OPHTHALMIC HOSP EQIP AND SUP."
+      },
+      {
+        "Amount": 47.37,
+        "FullName": "Employee 7C808367",
+        "Description": "Merchandise General EA|Car Wash EA|Tax 4 EA",
+        "Vendor": "ONCUE EXPRESS 8",
+        "TransactionDate": "4/26/2014 0:00:00",
+        "PostedDate": "4/28/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      }
+    ]
+  },
+  "qry_T2_Question9": {
+    "row_count": 44,
+    "first_10_rows": [
+      {
+        "Amount": 4151.05,
+        "FullName": "Employee 3B7AEC76",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "BROWNS BOTTLE SHOP",
+        "TransactionDate": "5/20/2014 0:00:00",
+        "PostedDate": "5/21/2014 0:00:00",
+        "MCC": "PACKAGE STORES--BEER,WINE,AND LIQUOR"
+      },
+      {
+        "Amount": 3841.49,
+        "FullName": "Employee 3B7AEC76",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "BROWNS BOTTLE SHOP",
+        "TransactionDate": "11/24/2014 0:00:00",
+        "PostedDate": "11/25/2014 0:00:00",
+        "MCC": "PACKAGE STORES--BEER,WINE,AND LIQUOR"
+      },
+      {
+        "Amount": 3433.51,
+        "FullName": "Employee 3B7AEC76",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "BROWNS BOTTLE SHOP",
+        "TransactionDate": "12/16/2014 0:00:00",
+        "PostedDate": "12/17/2014 0:00:00",
+        "MCC": "PACKAGE STORES--BEER,WINE,AND LIQUOR"
+      },
+      {
+        "Amount": 3239.63,
+        "FullName": "Employee 3B7AEC76",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "BROWNS BOTTLE SHOP",
+        "TransactionDate": "10/8/2014 0:00:00",
+        "PostedDate": "10/9/2014 0:00:00",
+        "MCC": "PACKAGE STORES--BEER,WINE,AND LIQUOR"
+      },
+      {
+        "Amount": 2676.44,
+        "FullName": "Employee 3B7AEC76",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "BROWNS BOTTLE SHOP",
+        "TransactionDate": "3/19/2014 0:00:00",
+        "PostedDate": "3/20/2014 0:00:00",
+        "MCC": "PACKAGE STORES--BEER,WINE,AND LIQUOR"
+      },
+      {
+        "Amount": 713.54,
+        "FullName": "Employee C8E2DD2D",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "BEELINE LIQUOR",
+        "TransactionDate": "7/15/2014 0:00:00",
+        "PostedDate": "7/17/2014 0:00:00",
+        "MCC": "PACKAGE STORES--BEER,WINE,AND LIQUOR"
+      },
+      {
+        "Amount": 466.65,
+        "FullName": "Employee C8E2DD2D",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "PARKHILL'S WAREHOUSE LIQ",
+        "TransactionDate": "1/16/2014 0:00:00",
+        "PostedDate": "1/17/2014 0:00:00",
+        "MCC": "PACKAGE STORES--BEER,WINE,AND LIQUOR"
+      },
+      {
+        "Amount": 395.26,
+        "FullName": "Employee CF06D83A",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "TULSA HILLS WINE CELLA",
+        "TransactionDate": "6/4/2014 0:00:00",
+        "PostedDate": "6/6/2014 0:00:00",
+        "MCC": "PACKAGE STORES--BEER,WINE,AND LIQUOR"
+      },
+      {
+        "Amount": 354.16,
+        "FullName": "Employee 30E87180",
+        "Description": "POLY(VINYL ALCOHOL) 87-9 EA|A TPP CELL CULTURE FLA",
+        "Vendor": "SIGMA ALDRICH US",
+        "TransactionDate": "9/15/2014 0:00:00",
+        "PostedDate": "9/16/2014 0:00:00",
+        "MCC": "DIRCT MARKETING/DIRCT MARKETERS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 328.57,
+        "FullName": "Employee 0313E90F",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "ROCK A BELLY BAR DELI",
+        "TransactionDate": "1/8/2014 0:00:00",
+        "PostedDate": "1/10/2014 0:00:00",
+        "MCC": "DRINKING PLACES (ALCOHOLIC BEVERAGES)"
+      }
+    ]
+  },
+  "qry_T2_Question10": {
+    "row_count": 723,
+    "first_10_rows": [
+      {
+        "Amount": 4075.0,
+        "FullName": "Employee 75B5564A",
+        "Description": "Merchandise General EA",
+        "Vendor": "BURK OIL CO INC",
+        "TransactionDate": "9/17/2014 0:00:00",
+        "PostedDate": "9/18/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 3956.64,
+        "FullName": "Employee 14C66547",
+        "Description": "Merchandise General EA",
+        "Vendor": "BURK OIL CO INC",
+        "TransactionDate": "8/19/2014 0:00:00",
+        "PostedDate": "8/20/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 3868.48,
+        "FullName": "Employee 75B5564A",
+        "Description": "Merchandise General EA",
+        "Vendor": "BURK OIL CO INC",
+        "TransactionDate": "10/13/2014 0:00:00",
+        "PostedDate": "10/14/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 3223.0,
+        "FullName": "Employee 2FE03942",
+        "Description": "Merchandise General EA",
+        "Vendor": "BURK OIL CO INC",
+        "TransactionDate": "7/21/2014 0:00:00",
+        "PostedDate": "7/22/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 3001.66,
+        "FullName": "Employee 2B4B388B",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "FRONK OIL OFFICE",
+        "TransactionDate": "4/30/2014 0:00:00",
+        "PostedDate": "5/2/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 2940.47,
+        "FullName": "Employee FDBCE0B8",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "FLUID SPECIALTIES",
+        "TransactionDate": "12/23/2014 0:00:00",
+        "PostedDate": "12/26/2014 0:00:00",
+        "MCC": "FUEL DEALERS--FUEL OIL,WOOD,COAL,AND LIQ. PETROLEUM"
+      },
+      {
+        "Amount": 2839.35,
+        "FullName": "Employee 14C66547",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "EARNHEART OIL 2",
+        "TransactionDate": "1/3/2014 0:00:00",
+        "PostedDate": "1/6/2014 0:00:00",
+        "MCC": "FUEL DEALERS--FUEL OIL,WOOD,COAL,AND LIQ. PETROLEUM"
+      },
+      {
+        "Amount": 2693.38,
+        "FullName": "Employee 2FE03942",
+        "Description": "Merchandise General EA",
+        "Vendor": "BURK OIL CO INC",
+        "TransactionDate": "2/19/2014 0:00:00",
+        "PostedDate": "2/20/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 2685.0,
+        "FullName": "Employee 14C66547",
+        "Description": "Merchandise General EA",
+        "Vendor": "BURK OIL CO INC",
+        "TransactionDate": "12/17/2014 0:00:00",
+        "PostedDate": "12/18/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      },
+      {
+        "Amount": 2562.97,
+        "FullName": "Employee 2FE03942",
+        "Description": "Merchandise General EA",
+        "Vendor": "BURK OIL CO INC",
+        "TransactionDate": "4/10/2014 0:00:00",
+        "PostedDate": "4/11/2014 0:00:00",
+        "MCC": "SERVICE STATIONS (WITH OR WITHOUT ANCILLARY SERVICES"
+      }
+    ]
+  },
+  "qry_T2_Question11": {
+    "row_count": 558,
+    "first_10_rows": [
+      {
+        "Amount": 2278.8,
+        "FullName": "Employee 90DF6774",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "WORLD COURIER GROUP INC",
+        "TransactionDate": "5/1/2014 0:00:00",
+        "PostedDate": "5/2/2014 0:00:00",
+        "MCC": "COURIER SERVICES-AIR AND GROUND,AND FREIGHT FORWARDERS"
+      },
+      {
+        "Amount": 2083.35,
+        "FullName": "Employee 90DF6774",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "WORLD COURIER GROUP INC",
+        "TransactionDate": "4/8/2014 0:00:00",
+        "PostedDate": "4/9/2014 0:00:00",
+        "MCC": "COURIER SERVICES-AIR AND GROUND,AND FREIGHT FORWARDERS"
+      },
+      {
+        "Amount": 1395.0,
+        "FullName": "Employee 75AAD1B0",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "FDX DANG GOODS20020400",
+        "TransactionDate": "2/6/2014 0:00:00",
+        "PostedDate": "2/7/2014 0:00:00",
+        "MCC": "COURIER SERVICES-AIR AND GROUND,AND FREIGHT FORWARDERS"
+      },
+      {
+        "Amount": 1218.0,
+        "FullName": "Employee 48164094",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "USPS 39781002033603457",
+        "TransactionDate": "5/13/2014 0:00:00",
+        "PostedDate": "5/14/2014 0:00:00",
+        "MCC": "POSTAGE STAMPS"
+      },
+      {
+        "Amount": 1189.0,
+        "FullName": "Employee 90DF6774",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "WORLD COURIER GROUP INC",
+        "TransactionDate": "5/28/2014 0:00:00",
+        "PostedDate": "5/29/2014 0:00:00",
+        "MCC": "COURIER SERVICES-AIR AND GROUND,AND FREIGHT FORWARDERS"
+      },
+      {
+        "Amount": 1166.6,
+        "FullName": "Employee 90DF6774",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "WORLD COURIER GROUP INC",
+        "TransactionDate": "3/6/2014 0:00:00",
+        "PostedDate": "3/7/2014 0:00:00",
+        "MCC": "COURIER SERVICES-AIR AND GROUND,AND FREIGHT FORWARDERS"
+      },
+      {
+        "Amount": 1035.0,
+        "FullName": "Employee ED551321",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "USPS 39614100033600891",
+        "TransactionDate": "1/16/2014 0:00:00",
+        "PostedDate": "1/17/2014 0:00:00",
+        "MCC": "POSTAGE STAMPS"
+      },
+      {
+        "Amount": 995.0,
+        "FullName": "Employee 75AAD1B0",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "FDX DANG GOODS20020400",
+        "TransactionDate": "2/26/2014 0:00:00",
+        "PostedDate": "2/27/2014 0:00:00",
+        "MCC": "COURIER SERVICES-AIR AND GROUND,AND FREIGHT FORWARDERS"
+      },
+      {
+        "Amount": 995.0,
+        "FullName": "Employee 75AAD1B0",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "FDX DANG GOODS20020400",
+        "TransactionDate": "5/30/2014 0:00:00",
+        "PostedDate": "6/2/2014 0:00:00",
+        "MCC": "COURIER SERVICES-AIR AND GROUND,AND FREIGHT FORWARDERS"
+      },
+      {
+        "Amount": 905.0,
+        "FullName": "Employee D2EF2D35",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "USPS 39781002033603457",
+        "TransactionDate": "2/18/2014 0:00:00",
+        "PostedDate": "2/19/2014 0:00:00",
+        "MCC": "POSTAGE STAMPS"
+      }
+    ]
+  },
+  "qry_T2_Question12": {
+    "row_count": 17,
+    "first_10_rows": [
+      {
+        "Amount": 1860.0,
+        "FullName": "Employee 44EFDE40",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "VFIS-CETS",
+        "TransactionDate": "10/29/2014 0:00:00",
+        "PostedDate": "10/30/2014 0:00:00",
+        "MCC": "INSURANCE-SALES & UNDERWRITING"
+      },
+      {
+        "Amount": 1400.0,
+        "FullName": "Employee 14A2FB72",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "US LIABILITYINSURANCE",
+        "TransactionDate": "5/1/2014 0:00:00",
+        "PostedDate": "5/2/2014 0:00:00",
+        "MCC": "INSURANCE-SALES & UNDERWRITING"
+      },
+      {
+        "Amount": 965.12,
+        "FullName": "Employee 44EFDE40",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "VFIS-CETS",
+        "TransactionDate": "10/29/2014 0:00:00",
+        "PostedDate": "10/30/2014 0:00:00",
+        "MCC": "INSURANCE-SALES & UNDERWRITING"
+      },
+      {
+        "Amount": 960.0,
+        "FullName": "Employee 44EFDE40",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "VFIS-CETS",
+        "TransactionDate": "9/18/2014 0:00:00",
+        "PostedDate": "9/19/2014 0:00:00",
+        "MCC": "INSURANCE-SALES & UNDERWRITING"
+      },
+      {
+        "Amount": 868.0,
+        "FullName": "Employee 82CD3BA5",
+        "Description": "SHIPPING H|INSURANCE H|HANDLING H|DEPOT LABOR H",
+        "Vendor": "SONY SERVICE",
+        "TransactionDate": "1/8/2014 0:00:00",
+        "PostedDate": "1/9/2014 0:00:00",
+        "MCC": "ELECTRONICS STORES"
+      },
+      {
+        "Amount": 809.0,
+        "FullName": "Employee CA0C78D2",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "FRANCIS L DEAN & ASSOC",
+        "TransactionDate": "11/14/2014 0:00:00",
+        "PostedDate": "11/17/2014 0:00:00",
+        "MCC": "INSURANCE-SALES & UNDERWRITING"
+      },
+      {
+        "Amount": 720.0,
+        "FullName": "Employee 8A27F2BB",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "VFIS-CETS",
+        "TransactionDate": "3/5/2014 0:00:00",
+        "PostedDate": "3/6/2014 0:00:00",
+        "MCC": "INSURANCE-SALES & UNDERWRITING"
+      },
+      {
+        "Amount": 626.0,
+        "FullName": "Employee 85533290",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "ACE AMERICAN INSURANCE C",
+        "TransactionDate": "3/18/2014 0:00:00",
+        "PostedDate": "3/19/2014 0:00:00",
+        "MCC": "INSURANCE-SALES & UNDERWRITING"
+      },
+      {
+        "Amount": 425.0,
+        "FullName": "Employee 9A789C5A",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "STATE FARM INSURANCE",
+        "TransactionDate": "10/15/2014 0:00:00",
+        "PostedDate": "10/17/2014 0:00:00",
+        "MCC": "INSURANCE-SALES & UNDERWRITING"
+      },
+      {
+        "Amount": 375.0,
+        "FullName": "Employee 496AFE75",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "STATE FARM INSURANCE",
+        "TransactionDate": "1/22/2014 0:00:00",
+        "PostedDate": "1/24/2014 0:00:00",
+        "MCC": "INSURANCE-SALES & UNDERWRITING"
+      }
+    ]
+  },
+  "qry_T2_Question13": {
+    "row_count": 2100,
+    "first_10_rows": [
+      {
+        "Amount": 12380.0,
+        "FullName": "Employee 241EA6B4",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "AABB-AMER. ASSO. BLOOD",
+        "TransactionDate": "4/4/2014 0:00:00",
+        "PostedDate": "4/7/2014 0:00:00",
+        "MCC": "MEMBERSHIP ORGANIZATIONS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 8191C4D2",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "GREATER OKC CHAMBER",
+        "TransactionDate": "7/8/2014 0:00:00",
+        "PostedDate": "7/9/2014 0:00:00",
+        "MCC": "MEMBERSHIP ORGANIZATIONS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee D8983D5C",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "ACADEMY OF NUTRI & DIET",
+        "TransactionDate": "1/16/2014 0:00:00",
+        "PostedDate": "1/17/2014 0:00:00",
+        "MCC": "MEMBERSHIP ORGANIZATIONS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 1BCC5E9A",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "I2E INC",
+        "TransactionDate": "2/14/2014 0:00:00",
+        "PostedDate": "2/17/2014 0:00:00",
+        "MCC": "CHARITABLE AND SOCIAL SERVICE ORGANIZATIONS"
+      },
+      {
+        "Amount": 4860.47,
+        "FullName": "Employee DFCA32F3",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "AMERICAN CONCRETE INSTIT",
+        "TransactionDate": "7/1/2014 0:00:00",
+        "PostedDate": "7/2/2014 0:00:00",
+        "MCC": "MEMBERSHIP ORGANIZATIONS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 4774.0,
+        "FullName": "Employee 4398674F",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "SCIENCE/AAAS",
+        "TransactionDate": "5/7/2014 0:00:00",
+        "PostedDate": "5/8/2014 0:00:00",
+        "MCC": "MEMBERSHIP ORGANIZATIONS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 4681.8,
+        "FullName": "Employee 435A4E74",
+        "Description": "Installation Sprink Sys 13 NMB|Water Based Fire Pr",
+        "Vendor": "NFPA NATL FIRE PROTECT",
+        "TransactionDate": "3/26/2014 0:00:00",
+        "PostedDate": "3/27/2014 0:00:00",
+        "MCC": "CHARITABLE AND SOCIAL SERVICE ORGANIZATIONS"
+      },
+      {
+        "Amount": 4681.8,
+        "FullName": "Employee 435A4E74",
+        "Description": "Installation Sprink Sys 13 NMB|Water Based Fire Pr",
+        "Vendor": "NFPA NATL FIRE PROTECT",
+        "TransactionDate": "4/22/2014 0:00:00",
+        "PostedDate": "4/23/2014 0:00:00",
+        "MCC": "CHARITABLE AND SOCIAL SERVICE ORGANIZATIONS"
+      },
+      {
+        "Amount": 4445.87,
+        "FullName": "Employee 1B3E2F3E",
+        "Description": "Water Based Fire Prot 14 NMB|FA and Signaling HB 1",
+        "Vendor": "NFPA NATL FIRE PROTECT",
+        "TransactionDate": "7/23/2014 0:00:00",
+        "PostedDate": "7/24/2014 0:00:00",
+        "MCC": "CHARITABLE AND SOCIAL SERVICE ORGANIZATIONS"
+      },
+      {
+        "Amount": 4250.0,
+        "FullName": "Employee 85533290",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "SQ  SOUTHWEST COLLEGIATE",
+        "TransactionDate": "7/28/2014 0:00:00",
+        "PostedDate": "7/29/2014 0:00:00",
+        "MCC": "MEMBERSHIP ORGANIZATIONS--NOT ELSEWHERE CLASSIFIED"
+      }
+    ]
+  },
+  "qry_T2_Question14": {
+    "row_count": 206,
+    "first_10_rows": [
+      {
+        "Amount": 4045.0,
+        "FullName": "Employee D6939836",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "KEY PLUS PRODUCT",
+        "TransactionDate": "10/17/2014 0:00:00",
+        "PostedDate": "10/20/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      },
+      {
+        "Amount": 3969.16,
+        "FullName": "Employee 820C69E3",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "SHOPNASACOM",
+        "TransactionDate": "11/13/2014 0:00:00",
+        "PostedDate": "11/17/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      },
+      {
+        "Amount": 3000.0,
+        "FullName": "Employee B1FA2F0D",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "DEKRA-LITE INDUSTRIES",
+        "TransactionDate": "9/10/2014 0:00:00",
+        "PostedDate": "9/12/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      },
+      {
+        "Amount": 2340.0,
+        "FullName": "Employee A1A60B73",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "NASA EXCHANGE - JSC",
+        "TransactionDate": "6/3/2014 0:00:00",
+        "PostedDate": "6/5/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      },
+      {
+        "Amount": 2040.31,
+        "FullName": "Employee B719CCCC",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "SPIRIT ACCESSORIES",
+        "TransactionDate": "9/9/2014 0:00:00",
+        "PostedDate": "9/12/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      },
+      {
+        "Amount": 2000.0,
+        "FullName": "Employee A2EB8629",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "MARTIN BUSERS HAPPY TRAIL",
+        "TransactionDate": "9/2/2014 0:00:00",
+        "PostedDate": "9/4/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      },
+      {
+        "Amount": 1880.0,
+        "FullName": "Employee A1A60B73",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "NASA EXCHANGE - JSC",
+        "TransactionDate": "3/11/2014 0:00:00",
+        "PostedDate": "3/13/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      },
+      {
+        "Amount": 1326.84,
+        "FullName": "Employee 76378195",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "BERLIN TOURISMUS",
+        "TransactionDate": "5/30/2014 0:00:00",
+        "PostedDate": "6/2/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      },
+      {
+        "Amount": 1321.53,
+        "FullName": "Employee 0B95E602",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "SPIRIT ACCESSORIES",
+        "TransactionDate": "1/10/2014 0:00:00",
+        "PostedDate": "1/13/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      },
+      {
+        "Amount": 1317.0,
+        "FullName": "Employee 59CCC847",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "GOLDNER ASSOCIATES, INC.",
+        "TransactionDate": "10/21/2014 0:00:00",
+        "PostedDate": "10/22/2014 0:00:00",
+        "MCC": "GIFT,CARD,NOVELTY,AND SOUVENIR STORES"
+      }
+    ]
+  },
+  "qry_T3_Question1": {
+    "row_count": 9,
+    "first_10_rows": [
+      {
+        "Digit": 1,
+        "ActualPercentage": 29.528
+      },
+      {
+        "Digit": 2,
+        "ActualPercentage": 17.771
+      },
+      {
+        "Digit": 3,
+        "ActualPercentage": 12.867
+      },
+      {
+        "Digit": 4,
+        "ActualPercentage": 9.814
+      },
+      {
+        "Digit": 5,
+        "ActualPercentage": 8.221
+      },
+      {
+        "Digit": 6,
+        "ActualPercentage": 6.124
+      },
+      {
+        "Digit": 7,
+        "ActualPercentage": 5.513
+      },
+      {
+        "Digit": 8,
+        "ActualPercentage": 5.372
+      },
+      {
+        "Digit": 9,
+        "ActualPercentage": 4.79
+      }
+    ]
+  },
+  "qry_T3_Question2": {
+    "row_count": 4924,
+    "first_10_rows": [
+      {
+        "TransactionDate": "1/1/2014 0:00:00",
+        "Vendor": "ADOBE SYSTEMS, INC.",
+        "FullName": "Employee EA435252",
+        "Amount": 19.99
+      },
+      {
+        "TransactionDate": "1/1/2014 0:00:00",
+        "Vendor": "ADOBE SYSTEMS, INC.",
+        "FullName": "Employee EA435252",
+        "Amount": 19.99
+      },
+      {
+        "TransactionDate": "1/1/2014 0:00:00",
+        "Vendor": "AT&T DATA",
+        "FullName": "Employee A09C1F4E",
+        "Amount": 25.0
+      },
+      {
+        "TransactionDate": "1/1/2014 0:00:00",
+        "Vendor": "AT&T DATA",
+        "FullName": "Employee A09C1F4E",
+        "Amount": 25.0
+      },
+      {
+        "TransactionDate": "1/1/2014 0:00:00",
+        "Vendor": "AT&T DATA",
+        "FullName": "Employee A09C1F4E",
+        "Amount": 25.0
+      },
+      {
+        "TransactionDate": "1/1/2014 0:00:00",
+        "Vendor": "AT&T DATA",
+        "FullName": "Employee A09C1F4E",
+        "Amount": 25.0
+      },
+      {
+        "TransactionDate": "1/1/2014 0:00:00",
+        "Vendor": "AT&T DATA",
+        "FullName": "Employee A09C1F4E",
+        "Amount": 25.0
+      },
+      {
+        "TransactionDate": "1/2/2014 0:00:00",
+        "Vendor": "ACFE",
+        "FullName": "Employee 25DD9E98",
+        "Amount": 850.0
+      },
+      {
+        "TransactionDate": "1/2/2014 0:00:00",
+        "Vendor": "ACFE",
+        "FullName": "Employee 25DD9E98",
+        "Amount": 850.0
+      },
+      {
+        "TransactionDate": "1/2/2014 0:00:00",
+        "Vendor": "ACFE",
+        "FullName": "Employee 25DD9E98",
+        "Amount": 850.0
+      }
+    ]
+  },
+  "qry_T3_Question3": {
+    "row_count": 278,
+    "first_10_rows": [
+      {
+        "FullName": "Employee 5BA61357",
+        "DuplicateOccasions": 78
+      },
+      {
+        "FullName": "Employee 50D6FB87",
+        "DuplicateOccasions": 65
+      },
+      {
+        "FullName": "Employee DC886243",
+        "DuplicateOccasions": 44
+      },
+      {
+        "FullName": "Employee 51914657",
+        "DuplicateOccasions": 36
+      },
+      {
+        "FullName": "Employee 4398674F",
+        "DuplicateOccasions": 33
+      },
+      {
+        "FullName": "Employee B1FA2F0D",
+        "DuplicateOccasions": 33
+      },
+      {
+        "FullName": "Employee E38DA379",
+        "DuplicateOccasions": 28
+      },
+      {
+        "FullName": "Employee 4859EBD7",
+        "DuplicateOccasions": 27
+      },
+      {
+        "FullName": "Employee 8A27F2BB",
+        "DuplicateOccasions": 26
+      },
+      {
+        "FullName": "Employee A09C1F4E",
+        "DuplicateOccasions": 25
+      }
+    ]
+  },
+  "qry_T3_Question4": {
+    "row_count": 160,
+    "first_10_rows": [
+      {
+        "Amount": 5000.0,
+        "Vendor": "801 CHOP HOUSE - KC",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee 5C39F90C"
+      },
+      {
+        "Amount": 5000.0,
+        "Vendor": "AAC CENTER",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee F260D38E"
+      },
+      {
+        "Amount": 5000.0,
+        "Vendor": "AASHTO   HEADQUARTERS",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee 464DE521"
+      },
+      {
+        "Amount": 2000.0,
+        "Vendor": "ABET, INC.",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee 5BA61357"
+      },
+      {
+        "Amount": 2000.0,
+        "Vendor": "ABET, INC.",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee 900F1169"
+      },
+      {
+        "Amount": 5000.0,
+        "Vendor": "ACADEMY OF NUTRI & DIET",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee D8983D5C"
+      },
+      {
+        "Amount": 1000.0,
+        "Vendor": "AEJMC",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee 9DF762B9"
+      },
+      {
+        "Amount": 5000.0,
+        "Vendor": "AIR SYSTEM AND PUMP SOLUT",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee 7239C3FF"
+      },
+      {
+        "Amount": 1000.0,
+        "Vendor": "ALABASTER CAVERN ST PARK",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee 4CC8ACC3"
+      },
+      {
+        "Amount": 1000.0,
+        "Vendor": "ALL AMERICAN MEDICAL",
+        "Description": "GENERAL PURCHASE",
+        "FullName": "Employee 1E6906AA"
+      }
+    ]
+  },
+  "qry_T3_Question5": {
+    "row_count": 1094,
+    "first_10_rows": [
+      {
+        "Amount": 10299.66,
+        "FullName": "Employee 302B04AF",
+        "Description": "ROOM CHARGES",
+        "Vendor": "WATERFRONT PLACE HOTEL",
+        "TransactionDate": "4/13/2014 0:00:00",
+        "PostedDate": "4/21/2014 0:00:00",
+        "MCC": "LODGING--HOTELS,MOTELS,AND RESORTS"
+      },
+      {
+        "Amount": 6905.52,
+        "FullName": "Employee 302B04AF",
+        "Description": "ROOM CHARGES",
+        "Vendor": "SPRINGHILL SUITES TERRE",
+        "TransactionDate": "11/22/2014 0:00:00",
+        "PostedDate": "11/24/2014 0:00:00",
+        "MCC": "SPRINGHILL SUITES"
+      },
+      {
+        "Amount": 4999.0,
+        "FullName": "Employee E38DA379",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "BIO RAD  M1531",
+        "TransactionDate": "7/19/2014 0:00:00",
+        "PostedDate": "7/21/2014 0:00:00",
+        "MCC": "DENTAL/LABORATORY/MEDICAL/OPHTHALMIC HOSP EQIP AND SUP."
+      },
+      {
+        "Amount": 4985.75,
+        "FullName": "Employee 7CBE6ACB",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "CHEROKEE STRIP BARBEQUE C",
+        "TransactionDate": "4/5/2014 0:00:00",
+        "PostedDate": "4/7/2014 0:00:00",
+        "MCC": "EATING PLACES AND RESTAURANTS"
+      },
+      {
+        "Amount": 4870.0,
+        "FullName": "Employee 464DE521",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "GIATEC",
+        "TransactionDate": "4/6/2014 0:00:00",
+        "PostedDate": "4/8/2014 0:00:00",
+        "MCC": "GENERAL CONTRACTORS-RESIDENTIAL AND COMMERCIAL"
+      },
+      {
+        "Amount": 4749.44,
+        "FullName": "Employee 073E5CEE",
+        "Description": "SHIPPING-FUEL SURCHARGE EA|FUNNEL FILTERING 50M PK",
+        "Vendor": "TFS FISHERSCI ECOM HUS",
+        "TransactionDate": "5/3/2014 0:00:00",
+        "PostedDate": "5/5/2014 0:00:00",
+        "MCC": "DENTAL/LABORATORY/MEDICAL/OPHTHALMIC HOSP EQIP AND SUP."
+      },
+      {
+        "Amount": 4680.0,
+        "FullName": "Employee A1DDFECC",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "TGI ENTERPRISES INC",
+        "TransactionDate": "7/19/2014 0:00:00",
+        "PostedDate": "7/21/2014 0:00:00",
+        "MCC": "MISCELLANEOUS APPAREL AND ACCESSORY STORES"
+      },
+      {
+        "Amount": 4675.0,
+        "FullName": "Employee 080B4F7F",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "PEN PENNWELL",
+        "TransactionDate": "8/23/2014 0:00:00",
+        "PostedDate": "8/25/2014 0:00:00",
+        "MCC": "DIRCT MARKETING/DIRCT MARKETERS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 4653.0,
+        "FullName": "Employee 8561FC94",
+        "Description": "ROOM CHARGES",
+        "Vendor": "HOLIDAY INNS PARK PLAZA",
+        "TransactionDate": "4/13/2014 0:00:00",
+        "PostedDate": "4/14/2014 0:00:00",
+        "MCC": "HOLIDAY INNS"
+      },
+      {
+        "Amount": 4625.0,
+        "FullName": "Employee 321F62EF",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "VMWARE INC",
+        "TransactionDate": "6/7/2014 0:00:00",
+        "PostedDate": "6/9/2014 0:00:00",
+        "MCC": "COMP PROG,DATA PROCESSING,AND INTEGRATED SYS DES IGN SVCS"
+      }
+    ]
+  },
+  "qry_T3_Question6": {
+    "row_count": 187,
+    "first_10_rows": [
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 16C4B190",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "WIZARD INDUSTRIES",
+        "TransactionDate": "5/30/2014 0:00:00",
+        "PostedDate": "6/2/2014 0:00:00",
+        "MCC": "MISCELLANEOUS REPAIR SHOPS AND RELATED SERVICES"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 1BCC5E9A",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "UM CITI PROGRAM",
+        "TransactionDate": "9/2/2014 0:00:00",
+        "PostedDate": "9/3/2014 0:00:00",
+        "MCC": "COLLEGES,UNIVERSITIES,PROFESSIONAL SCHLS AND JR COLLEGES"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 1BCC5E9A",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "I2E INC",
+        "TransactionDate": "2/14/2014 0:00:00",
+        "PostedDate": "2/17/2014 0:00:00",
+        "MCC": "CHARITABLE AND SOCIAL SERVICE ORGANIZATIONS"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 321F62EF",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "MEDLEY MATERIAL HANDLING",
+        "TransactionDate": "12/12/2014 0:00:00",
+        "PostedDate": "12/15/2014 0:00:00",
+        "MCC": "DIRCT MARKETING/DIRCT MARKETERS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 321F62EF",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "INFORMZ INC",
+        "TransactionDate": "2/11/2014 0:00:00",
+        "PostedDate": "2/12/2014 0:00:00",
+        "MCC": "ADVERTISING SERVICES"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 33356908",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "IN  NC3",
+        "TransactionDate": "5/1/2014 0:00:00",
+        "PostedDate": "5/2/2014 0:00:00",
+        "MCC": "SCHOOLS AND EDUCATIONAL SERVICES NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 464DE521",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "AASHTO   HEADQUARTERS",
+        "TransactionDate": "6/26/2014 0:00:00",
+        "PostedDate": "6/27/2014 0:00:00",
+        "MCC": "DIRCT MARKETING/DIRCT MARKETERS--NOT ELSEWHERE CLASSIFIED"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 5C39F90C",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "RUTH'S SAN DIEGO",
+        "TransactionDate": "3/19/2014 0:00:00",
+        "PostedDate": "3/21/2014 0:00:00",
+        "MCC": "EATING PLACES AND RESTAURANTS"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 5C39F90C",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "801 CHOP HOUSE - KC",
+        "TransactionDate": "3/11/2014 0:00:00",
+        "PostedDate": "3/12/2014 0:00:00",
+        "MCC": "EATING PLACES AND RESTAURANTS"
+      },
+      {
+        "Amount": 5000.0,
+        "FullName": "Employee 6EDB257F",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "SQ  INDIGDEV LLC",
+        "TransactionDate": "9/5/2014 0:00:00",
+        "PostedDate": "9/8/2014 0:00:00",
+        "MCC": "MANAGEMENT,CONSULTING AND PUBLIC RELATIONS SERVICES"
+      }
+    ]
+  },
+  "qry_T3_Question7": {
+    "row_count": 174,
+    "first_10_rows": [
+      {
+        "FullName": "Employee 14C66547",
+        "Vendor": "DTV DIRECTV SERVICE",
+        "Amount": 101.98,
+        "TransactionCount": 38,
+        "DistinctDates": 25,
+        "TotalAmount": 3875.24,
+        "FirstTransactionDate": "2014-03-06",
+        "LastTransactionDate": "2014-12-19"
+      },
+      {
+        "FullName": "Employee 080B4F7F",
+        "Vendor": "GOOGLE  ADWS9282500622",
+        "Amount": 500.0,
+        "TransactionCount": 21,
+        "DistinctDates": 21,
+        "TotalAmount": 10500.0,
+        "FirstTransactionDate": "2014-05-12",
+        "LastTransactionDate": "2014-12-22"
+      },
+      {
+        "FullName": "Employee BDD945F9",
+        "Vendor": "QDI DIAG LAB OKLAHOMA",
+        "Amount": 150.07,
+        "TransactionCount": 21,
+        "DistinctDates": 9,
+        "TotalAmount": 3151.47,
+        "FirstTransactionDate": "2014-01-09",
+        "LastTransactionDate": "2014-07-11"
+      },
+      {
+        "FullName": "Employee 7E85B0B7",
+        "Vendor": "OK STATE BUREAU OF INV",
+        "Amount": 153.0,
+        "TransactionCount": 20,
+        "DistinctDates": 8,
+        "TotalAmount": 3060.0,
+        "FirstTransactionDate": "2014-06-13",
+        "LastTransactionDate": "2014-12-08"
+      },
+      {
+        "FullName": "Employee C53C5224",
+        "Vendor": "HOMETOWN BRAND CENTER",
+        "Amount": 539.0,
+        "TransactionCount": 17,
+        "DistinctDates": 16,
+        "TotalAmount": 9163.0,
+        "FirstTransactionDate": "2014-01-23",
+        "LastTransactionDate": "2014-10-08"
+      },
+      {
+        "FullName": "Employee 465E5080",
+        "Vendor": "GOOGLE  ADWS9694845002",
+        "Amount": 500.0,
+        "TransactionCount": 17,
+        "DistinctDates": 17,
+        "TotalAmount": 8500.0,
+        "FirstTransactionDate": "2014-01-02",
+        "LastTransactionDate": "2014-04-04"
+      },
+      {
+        "FullName": "Employee C53C5224",
+        "Vendor": "AMERICAN AIR CONDITIONING",
+        "Amount": 399.99,
+        "TransactionCount": 17,
+        "DistinctDates": 16,
+        "TotalAmount": 6799.83,
+        "FirstTransactionDate": "2014-01-09",
+        "LastTransactionDate": "2014-12-16"
+      },
+      {
+        "FullName": "Employee C53C5224",
+        "Vendor": "HOMETOWN BRAND CENTER",
+        "Amount": 509.0,
+        "TransactionCount": 16,
+        "DistinctDates": 13,
+        "TotalAmount": 8144.0,
+        "FirstTransactionDate": "2014-02-27",
+        "LastTransactionDate": "2014-12-05"
+      },
+      {
+        "FullName": "Employee 365C16F2",
+        "Vendor": "BITGRAVITY, INC",
+        "Amount": 390.0,
+        "TransactionCount": 13,
+        "DistinctDates": 10,
+        "TotalAmount": 5070.0,
+        "FirstTransactionDate": "2014-03-24",
+        "LastTransactionDate": "2014-12-23"
+      },
+      {
+        "FullName": "Employee 8163A652",
+        "Vendor": "STILLWATER STEEL & SUPPLY",
+        "Amount": 285.0,
+        "TransactionCount": 13,
+        "DistinctDates": 13,
+        "TotalAmount": 3705.0,
+        "FirstTransactionDate": "2014-01-21",
+        "LastTransactionDate": "2014-10-20"
+      }
+    ]
+  },
+  "qry_T3_Question8": {
+    "row_count": 70,
+    "first_10_rows": [
+      {
+        "FullName": "Employee 6A680974",
+        "Vendor": "VETERANS AFFRS DMC",
+        "TransactionCount": 109,
+        "EmployeeVendorTotal": 116022.89,
+        "VendorTotal": 116022.89,
+        "EmployeeSharePercentage": 100.0
+      },
+      {
+        "FullName": "Employee 302B04AF",
+        "Vendor": "COCKRELL EYECARE CENTER",
+        "TransactionCount": 6,
+        "EmployeeVendorTotal": 39834.61,
+        "VendorTotal": 39834.61,
+        "EmployeeSharePercentage": 100.0
+      },
+      {
+        "FullName": "Employee F41CAF02",
+        "Vendor": "PHONAK HEARING SYS",
+        "TransactionCount": 50,
+        "EmployeeVendorTotal": 39199.2,
+        "VendorTotal": 39199.2,
+        "EmployeeSharePercentage": 100.0
+      },
+      {
+        "FullName": "Employee 0E3DD9FC",
+        "Vendor": "NASA CATERING 10550515",
+        "TransactionCount": 9,
+        "EmployeeVendorTotal": 29918.01,
+        "VendorTotal": 29918.01,
+        "EmployeeSharePercentage": 100.0
+      },
+      {
+        "FullName": "Employee 1ECBEFA4",
+        "Vendor": "L & M OFFICE FURNITURE-OK",
+        "TransactionCount": 9,
+        "EmployeeVendorTotal": 21709.32,
+        "VendorTotal": 21709.32,
+        "EmployeeSharePercentage": 100.0
+      },
+      {
+        "FullName": "Employee CEFFB0FE",
+        "Vendor": "DOUBLETREE HOTEL BETHESDA",
+        "TransactionCount": 11,
+        "EmployeeVendorTotal": 21020.26,
+        "VendorTotal": 21020.26,
+        "EmployeeSharePercentage": 100.0
+      },
+      {
+        "FullName": "Employee B6A4B277",
+        "Vendor": "ALL MAINTENANCE SUPPLY IN",
+        "TransactionCount": 19,
+        "EmployeeVendorTotal": 20616.36,
+        "VendorTotal": 20616.36,
+        "EmployeeSharePercentage": 100.0
+      },
+      {
+        "FullName": "Employee 68FFDF40",
+        "Vendor": "CUSTOM MISERS LIVESTOCK P",
+        "TransactionCount": 8,
+        "EmployeeVendorTotal": 20433.2,
+        "VendorTotal": 20433.2,
+        "EmployeeSharePercentage": 100.0
+      },
+      {
+        "FullName": "Employee E392180E",
+        "Vendor": "PJ S SUPPLY",
+        "TransactionCount": 25,
+        "EmployeeVendorTotal": 17436.9,
+        "VendorTotal": 17436.9,
+        "EmployeeSharePercentage": 100.0
+      },
+      {
+        "FullName": "Employee 3AF7058B",
+        "Vendor": "LASERGRADE TEST EXAM",
+        "TransactionCount": 12,
+        "EmployeeVendorTotal": 17060.0,
+        "VendorTotal": 17060.0,
+        "EmployeeSharePercentage": 100.0
+      }
+    ]
+  }
+}

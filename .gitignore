@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.streamlit/secrets.toml
+*.sqlite-journal
+data/pcards.db
+data/pcards.db.gz
