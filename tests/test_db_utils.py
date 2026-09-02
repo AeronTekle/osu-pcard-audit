@@ -2,6 +2,7 @@ import unittest
 from pathlib import Path
 
 from db_utils import get_years, run_readonly_query, search_transactions, validate_readonly_sql
+from question_interpreter import interpret_common_question
 
 
 DB = Path(__file__).resolve().parents[1] / "data" / "pcards.db"
@@ -36,6 +37,36 @@ class DatabaseTests(unittest.TestCase):
         executed, rows = run_readonly_query(DB, "SELECT ID, Amount FROM pcards")
         self.assertIn("LIMIT 500", executed)
         self.assertEqual(len(rows), 500)
+
+    def test_builtin_vendor_question_runs_without_tokens(self):
+        answer = interpret_common_question(
+            "Which five vendors received the highest total amount in 2014?",
+            default_year=2014,
+        )
+        self.assertIsNotNone(answer)
+        executed, rows = run_readonly_query(DB, answer.sql)
+        self.assertIn("LIMIT 5", executed)
+        self.assertEqual(len(rows), 5)
+        self.assertIn("Vendor", rows.columns)
+
+    def test_builtin_threshold_question_uses_selected_year(self):
+        answer = interpret_common_question(
+            "Which transactions exceeded 5,000 dollars?", default_year=2014
+        )
+        self.assertIsNotNone(answer)
+        _, rows = run_readonly_query(DB, answer.sql)
+        self.assertEqual(len(rows), 33)
+        self.assertTrue((rows["Amount"] > 5000).all())
+
+    def test_builtin_vendor_keyword_question(self):
+        answer = interpret_common_question(
+            "Search vendor for post office in 2014", default_year=2013
+        )
+        self.assertIsNotNone(answer)
+        self.assertIn("%post office%", answer.sql)
+        _, rows = run_readonly_query(DB, answer.sql)
+        self.assertFalse(rows.empty)
+        self.assertTrue(rows["Vendor"].str.contains("post office", case=False).all())
 
 
 if __name__ == "__main__":

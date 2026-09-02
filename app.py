@@ -19,6 +19,7 @@ from db_utils import (
     run_readonly_query,
     search_transactions,
 )
+from question_interpreter import interpret_common_question
 
 
 ROOT = Path(__file__).resolve().parent
@@ -74,12 +75,16 @@ def get_secret(name: str, default: str = "") -> str:
     return str(value or os.getenv(name, default))
 
 
-def question_to_sql(question: str) -> SQLAnswer:
+def question_to_sql(question: str, default_year: int) -> SQLAnswer:
+    built_in = interpret_common_question(question, default_year=default_year)
+    if built_in:
+        return SQLAnswer(sql=built_in.sql, explanation=built_in.explanation)
+
     api_key = get_secret("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError(
-            "OPENAI_API_KEY is not configured. Add it in Streamlit under "
-            "App settings > Secrets; never place it in the repository."
+            "This wording is outside the built-in question patterns. Try one of "
+            "the examples, or add API credits for unrestricted AI translation."
         )
 
     schema = """
@@ -104,15 +109,21 @@ If the user does not ask for a different order, show the largest amounts first.
 The application will add a display limit automatically.
 """.strip()
 
-    client = OpenAI(api_key=api_key)
-    response = client.responses.parse(
-        model=get_secret("OPENAI_MODEL", "gpt-5.6"),
-        input=[
-            {"role": "system", "content": instructions},
-            {"role": "user", "content": question},
-        ],
-        text_format=SQLAnswer,
-    )
+    try:
+        client = OpenAI(api_key=api_key)
+        response = client.responses.parse(
+            model=get_secret("OPENAI_MODEL", "gpt-5.6"),
+            input=[
+                {"role": "system", "content": instructions},
+                {"role": "user", "content": question},
+            ],
+            text_format=SQLAnswer,
+        )
+    except Exception as exc:
+        raise RuntimeError(
+            "The optional AI service is unavailable or has no credits. The built-in "
+            "examples still work without tokens."
+        ) from exc
     if response.output_parsed is None:
         raise RuntimeError("The model did not return a usable SQL query.")
     return response.output_parsed
@@ -279,8 +290,8 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-dashboard_tab, ask_tab = st.tabs(
-    ["Overview & risk search", "Ask the database"]
+ask_tab, dashboard_tab = st.tabs(
+    ["Ask the database", "Prohibited-purchase dashboard"]
 )
 
 with dashboard_tab:
@@ -330,6 +341,28 @@ with dashboard_tab:
         "merchant category, business description, and amount before deciding whether "
         "supporting evidence is required."
     )
+    with st.expander("Prohibited-purchase reference list"):
+        st.markdown(
+            """
+            - Alcohol
+            - Cash, cash advances, and ATM transactions
+            - Decorations
+            - Donations and sponsorships
+            - Gasoline
+            - Gifts, gift cards, and gift certificates
+            - Insurance
+            - Late fees
+            - Mail and postage
+            - Moving expenses
+            - Personal purchases
+            - Personal or individual memberships and dues
+            - Salaries, wages, and benefits
+            - Service or incentive awards and items purchased for employees
+
+            Enter a distinctive word from a category in either search box. A match is
+            a lead for follow-up, not proof that the purchase violated policy.
+            """
+        )
 
     description_col, vendor_search_col = st.columns(2)
     with description_col:
@@ -421,13 +454,13 @@ with ask_tab:
 
     st.write("")
     api_ready = bool(get_secret("OPENAI_API_KEY"))
-    if api_ready:
-        st.success("AI query mode is ready.", icon=":material/check_circle:")
-    else:
-        st.warning(
-            "AI query mode needs an OPENAI_API_KEY in Streamlit App settings > Secrets. "
-            "The overview and risk searches remain fully available."
-        )
+    st.success(
+        "Question mode is ready. The examples and common audit questions work without "
+        "tokens; API credits only expand the range of wording.",
+        icon=":material/check_circle:",
+    )
+    if not api_ready:
+        st.caption("Optional AI translation is not configured; built-in questions remain available.")
 
     examples = [
         "Write your own question",
@@ -449,7 +482,6 @@ with ask_tab:
         ask = st.form_submit_button(
             "Run question",
             type="primary",
-            disabled=not api_ready,
             icon=":material/play_arrow:",
         )
 
@@ -459,7 +491,7 @@ with ask_tab:
         else:
             try:
                 with st.spinner("Creating and running a read-only query..."):
-                    answer = question_to_sql(question.strip())
+                    answer = question_to_sql(question.strip(), selected_year)
                     executed_sql, result = run_readonly_query(DB_PATH, answer.sql)
                 st.success(f"Returned {len(result):,} row(s).")
                 st.write(answer.explanation)

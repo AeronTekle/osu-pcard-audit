@@ -6,8 +6,8 @@
 
 The live app includes a 2010–2014 audit overview, targeted description and
 vendor searches, downloadable evidence, and a protected natural-language query
-workflow. The overview and searches work without an API key. Natural-language
-questions require `OPENAI_API_KEY` in Streamlit's secret settings.
+workflow. The dashboard and common natural-language audit questions work without
+an API key. Optional API access expands the range of supported wording.
 
 This repository completes the P-card analytics mindset assignment:
 
@@ -16,9 +16,10 @@ This repository completes the P-card analytics mindset assignment:
 - `analysis_results.json` contains the row counts and first ten rows used to
   verify the conclusions in the completed assignment document.
 - `app.py` is the two-tab Streamlit website required in Part IV.
-- `data/pcards.db.gz.part*` contains the supplied database with the completed
-  audit views. It is compressed and split into GitHub-friendly pieces. The app
-  assembles and expands it automatically at startup without changing its contents.
+- `data/pcards.db.gz` contains the supplied database with the completed audit
+  views, compressed below GitHub's file-size limit. The app expands it
+  automatically at startup without changing its contents.
+- `SUBMISSION_CHECKLIST.md` maps every assignment requirement to its completed evidence.
 
 ## Run locally
 
@@ -29,8 +30,8 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-The prohibited-purchase dashboard works without an API key. The natural-language
-tab needs an OpenAI API key supplied as an environment variable:
+The dashboard and built-in natural-language question patterns work without an API
+key. For unrestricted AI translation, optionally supply an OpenAI API key:
 
 ```bash
 export OPENAI_API_KEY="your-key"
