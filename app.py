@@ -10,8 +10,6 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-from openai import OpenAI
-from pydantic import BaseModel, Field
 
 from db_utils import (
     get_year_dashboard,
@@ -19,6 +17,7 @@ from db_utils import (
     run_readonly_query,
     search_transactions,
 )
+from microsoft_ai import SQLAnswer, load_microsoft_config, translate_question
 from question_interpreter import interpret_common_question
 
 
@@ -62,11 +61,6 @@ except (FileNotFoundError, OSError) as exc:
     st.stop()
 
 
-class SQLAnswer(BaseModel):
-    sql: str = Field(description="One read-only SQLite SELECT query")
-    explanation: str = Field(description="A short plain-English explanation of the query")
-
-
 def get_secret(name: str, default: str = "") -> str:
     try:
         value = st.secrets.get(name, default)
@@ -80,53 +74,13 @@ def question_to_sql(question: str, default_year: int) -> SQLAnswer:
     if built_in:
         return SQLAnswer(sql=built_in.sql, explanation=built_in.explanation)
 
-    api_key = get_secret("OPENAI_API_KEY")
-    if not api_key:
+    config = load_microsoft_config(get_secret)
+    if not config.configured:
         raise RuntimeError(
-            "This wording is outside the built-in question patterns. Try one of "
-            "the examples, or add API credits for unrestricted AI translation."
+            "This wording is outside the built-in question patterns. Configure the "
+            "Microsoft Azure OpenAI/Copilot connection, or use one of the examples."
         )
-
-    schema = """
-Table: pcards
-Columns:
-- Year INTEGER; Month INTEGER; FullName TEXT; ID INTEGER
-- AgencyNumber INTEGER; AgencyName TEXT
-- CardholderLastName TEXT; CardholderFirstInitial TEXT
-- Description TEXT; Amount REAL; Vendor TEXT
-- TransactionDate TEXT and PostedDate TEXT in M/D/YYYY 0:00:00 format
-- MCC TEXT (merchant category description)
-""".strip()
-    instructions = f"""
-You translate an auditor's natural-language question into SQLite.
-{schema}
-
-Return exactly one read-only SELECT query (a WITH query is also allowed) and a short
-explanation. Never use PRAGMA, ATTACH, data-changing SQL, comments, or semicolons.
-Use case-insensitive matching with lower(...) and LIKE when searching text.
-Use COALESCE for nullable text. Prefer explicit columns rather than SELECT *.
-If the user does not ask for a different order, show the largest amounts first.
-The application will add a display limit automatically.
-""".strip()
-
-    try:
-        client = OpenAI(api_key=api_key)
-        response = client.responses.parse(
-            model=get_secret("OPENAI_MODEL", "gpt-5.6"),
-            input=[
-                {"role": "system", "content": instructions},
-                {"role": "user", "content": question},
-            ],
-            text_format=SQLAnswer,
-        )
-    except Exception as exc:
-        raise RuntimeError(
-            "The optional AI service is unavailable or has no credits. The built-in "
-            "examples still work without tokens."
-        ) from exc
-    if response.output_parsed is None:
-        raise RuntimeError("The model did not return a usable SQL query.")
-    return response.output_parsed
+    return translate_question(question, default_year, config)
 
 
 def money(value: float) -> str:
@@ -161,7 +115,7 @@ def show_search_results(
     st.bar_chart(chart_data, y="Amount", x_label="Month", y_label="Amount (USD)")
     st.dataframe(
         frame,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
         column_config={
             "Amount": st.column_config.NumberColumn("Amount (USD)", format="$%.2f"),
@@ -269,7 +223,7 @@ with st.sidebar:
     st.link_button(
         "View source on GitHub",
         "https://github.com/AeronTekle/osu-pcard-audit",
-        use_container_width=True,
+        width="stretch",
         icon=":material/code:",
     )
 
@@ -326,7 +280,7 @@ with dashboard_tab:
         st.caption("The ten vendors with the highest total amount in the selected year.")
         st.dataframe(
             top_vendors,
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
             column_config={
                 "Amount": st.column_config.NumberColumn("Amount (USD)", format="$%.2f"),
@@ -453,14 +407,24 @@ with ask_tab:
         )
 
     st.write("")
-    api_ready = bool(get_secret("OPENAI_API_KEY"))
+    microsoft_config = load_microsoft_config(get_secret)
     st.success(
         "Question mode is ready. The examples and common audit questions work without "
-        "tokens; API credits only expand the range of wording.",
+        "tokens; Microsoft AI expands the range of wording.",
         icon=":material/check_circle:",
     )
-    if not api_ready:
-        st.caption("Optional AI translation is not configured; built-in questions remain available.")
+    if microsoft_config.ready:
+        st.caption("Microsoft Azure OpenAI/Copilot translation is configured and ready.")
+    elif microsoft_config.configured:
+        st.warning(
+            "Microsoft AI setup is incomplete. Add these Streamlit Secrets: "
+            + ", ".join(microsoft_config.missing)
+            + "."
+        )
+    else:
+        st.caption(
+            "Microsoft AI translation is not configured; built-in questions remain available."
+        )
 
     examples = [
         "Write your own question",
@@ -497,7 +461,7 @@ with ask_tab:
                 st.write(answer.explanation)
                 with st.expander("Show generated SQLite query"):
                     st.code(executed_sql, language="sql")
-                st.dataframe(result, use_container_width=True, hide_index=True)
+                st.dataframe(result, width="stretch", hide_index=True)
                 st.download_button(
                     "Download answer",
                     result.to_csv(index=False).encode("utf-8"),

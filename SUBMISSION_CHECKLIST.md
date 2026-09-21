@@ -18,7 +18,7 @@
 | Four distinct student-defined fraud tests | Questions 5–8 cover weekend activity, transactions just below the limit, recurring identical charges, and vendor concentration. |
 | Results-based conclusions | Every Part II and III answer quantifies the result and states evidence needed before concluding that an exception occurred. |
 | Website has two tabs | “Ask the database” and “Prohibited-purchase dashboard.” |
-| Natural-language questions | Common audit questions run without API credits; optional API access supports broader wording. |
+| Natural-language questions | Common audit questions run without API credits; optional Microsoft Azure OpenAI/Copilot-compatible access supports broader wording. |
 | Year selector | Reporting-year selector covers 2010–2014. |
 | Separate Description search | Dedicated form searches only `Description` and returns follow-up fields. |
 | Separate Vendor search | Dedicated form searches only `Vendor` and returns follow-up fields. |
@@ -31,7 +31,7 @@
 - Source database rows: `489,178`
 - OSU 2014 rows: `116,031`
 - Analysis views executed: `22` (14 Part II + 8 Part III)
-- Automated application tests: `7 passed`
+- Automated application tests: `14 passed`
 - Word placeholders remaining: `0`
 - Word pages visually checked: `18`
 - API keys found in repository source: `0`
