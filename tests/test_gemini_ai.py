@@ -6,6 +6,7 @@ import httpx
 from gemini_ai import (
     DEFAULT_GEMINI_MODEL,
     GEMINI_API_BASE_URL,
+    GEMINI_REQUEST_TIMEOUT_SECONDS,
     GeminiAIConfig,
     GeminiAIError,
     SQLAnswer,
@@ -77,7 +78,7 @@ class GeminiAIRequestTests(unittest.TestCase):
             request.kwargs["json"]["generationConfig"]["responseMimeType"],
             "application/json",
         )
-        self.assertEqual(request.kwargs["timeout"], 30.0)
+        self.assertEqual(request.kwargs["timeout"], GEMINI_REQUEST_TIMEOUT_SECONDS)
         self.assertEqual(result, parsed)
 
     @patch("gemini_ai.httpx.post")
@@ -109,10 +110,31 @@ class GeminiAIRequestTests(unittest.TestCase):
     @patch("gemini_ai.httpx.post")
     def test_timeout_is_actionable(self, post):
         post.side_effect = httpx.ReadTimeout("timed out")
-        with self.assertRaisesRegex(GeminiAIError, "within 30 seconds"):
+        with self.assertRaisesRegex(GeminiAIError, "after two attempts"):
             translate_question(
                 "A custom question", 2014, GeminiAIConfig(api_key="test-key")
             )
+        self.assertEqual(post.call_count, 2)
+
+    @patch("gemini_ai.time.sleep")
+    @patch("gemini_ai.httpx.post")
+    def test_timeout_is_retried_once(self, post, sleep):
+        parsed = SQLAnswer(sql="SELECT 1", explanation="Test query.")
+        success = Mock(status_code=200)
+        success.json.return_value = {
+            "candidates": [
+                {"content": {"parts": [{"text": parsed.model_dump_json()}]}}
+            ]
+        }
+        post.side_effect = [httpx.ReadTimeout("timed out"), success]
+
+        result = translate_question(
+            "A custom question", 2014, GeminiAIConfig(api_key="test-key")
+        )
+
+        self.assertEqual(result, parsed)
+        self.assertEqual(post.call_count, 2)
+        sleep.assert_called_once_with(1)
 
     @patch("gemini_ai.time.sleep")
     @patch("gemini_ai.httpx.post")
