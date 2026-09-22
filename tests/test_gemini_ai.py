@@ -106,6 +106,27 @@ class GeminiAIRequestTests(unittest.TestCase):
                 "A custom question", 2014, GeminiAIConfig(api_key="test-key")
             )
 
+    @patch("gemini_ai.time.sleep")
+    @patch("gemini_ai.httpx.post")
+    def test_transient_503_is_retried(self, post, sleep):
+        retry = Mock(status_code=503)
+        parsed = SQLAnswer(sql="SELECT 1", explanation="Test query.")
+        success = Mock(status_code=200)
+        success.json.return_value = {
+            "candidates": [
+                {"content": {"parts": [{"text": parsed.model_dump_json()}]}}
+            ]
+        }
+        post.side_effect = [retry, success]
+
+        result = translate_question(
+            "A custom question", 2014, GeminiAIConfig(api_key="test-key")
+        )
+
+        self.assertEqual(result, parsed)
+        self.assertEqual(post.call_count, 2)
+        sleep.assert_called_once_with(1)
+
     def test_missing_key_is_rejected_before_request(self):
         with self.assertRaisesRegex(GeminiAIError, "GEMINI_API_KEY"):
             translate_question("A custom question", 2014, GeminiAIConfig())
