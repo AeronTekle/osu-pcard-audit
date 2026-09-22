@@ -98,6 +98,8 @@ The application will add a display limit automatically.
         client = OpenAI(
             api_key=config.api_key,
             base_url=GEMINI_OPENAI_BASE_URL,
+            timeout=30.0,
+            max_retries=1,
         )
         completion = client.beta.chat.completions.parse(
             model=config.model,
@@ -109,10 +111,11 @@ The application will add a display limit automatically.
         )
     except Exception as exc:
         status = getattr(exc, "status_code", None)
-        if status in {401, 403}:
+        if status in {400, 401, 403}:
             message = (
                 "Google rejected the Gemini API key. Check GEMINI_API_KEY and "
-                "confirm that the key is active and permitted to use the Gemini API."
+                "confirm that it is an active key from Google AI Studio with Gemini "
+                "API access."
             )
         elif status == 404:
             message = (
