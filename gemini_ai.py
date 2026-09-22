@@ -4,12 +4,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Callable
+from urllib.parse import quote
 
-from openai import OpenAI
-from pydantic import BaseModel, Field
+import httpx
+from pydantic import BaseModel, Field, ValidationError
 
 
-GEMINI_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models"
 DEFAULT_GEMINI_MODEL = "gemini-3.5-flash-lite"
 LEGACY_GEMINI_MODELS = {"gemini-3.8-flash"}
 
@@ -89,7 +90,8 @@ You translate an auditor's natural-language question into SQLite.
 {schema}
 
 Return exactly one read-only SELECT query (a WITH query is also allowed) and a short
-explanation. Never use PRAGMA, ATTACH, data-changing SQL, comments, or semicolons.
+explanation as JSON with exactly two string fields: sql and explanation.
+Never use PRAGMA, ATTACH, data-changing SQL, comments, or semicolons.
 Use case-insensitive matching with lower(...) and LIKE when searching text.
 Use COALESCE for nullable text. Prefer explicit columns rather than SELECT *.
 If the user does not specify a year, use {int(default_year)}.
@@ -98,22 +100,27 @@ The application will add a display limit automatically.
 """.strip()
 
     try:
-        client = OpenAI(
-            api_key=config.api_key,
-            base_url=GEMINI_OPENAI_BASE_URL,
+        url = f"{GEMINI_API_BASE_URL}/{quote(config.model, safe='')}:generateContent"
+        response = httpx.post(
+            url,
+            headers={"x-goog-api-key": config.api_key},
+            json={
+                "systemInstruction": {"parts": [{"text": instructions}]},
+                "contents": [
+                    {"role": "user", "parts": [{"text": question}]}
+                ],
+                "generationConfig": {
+                    "responseMimeType": "application/json",
+                    "responseSchema": SQLAnswer.model_json_schema(),
+                },
+            },
             timeout=30.0,
-            max_retries=1,
         )
-        completion = client.beta.chat.completions.parse(
-            model=config.model,
-            messages=[
-                {"role": "system", "content": instructions},
-                {"role": "user", "content": question},
-            ],
-            response_format=SQLAnswer,
-        )
-    except Exception as exc:
-        status = getattr(exc, "status_code", None)
+        response.raise_for_status()
+        text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
+        return SQLAnswer.model_validate_json(text)
+    except httpx.HTTPStatusError as exc:
+        status = exc.response.status_code
         if status in {400, 401, 403}:
             message = (
                 "Google rejected the Gemini API key. Check GEMINI_API_KEY and "
@@ -132,12 +139,13 @@ The application will add a display limit automatically.
             )
         else:
             message = (
-                "The Gemini request failed. Check the API key, model access, network "
-                "connection and quota."
+                f"The Gemini API returned HTTP {status}. Try again shortly or check "
+                "the Google AI Studio project status."
             )
         raise GeminiAIError(message) from exc
-
-    parsed = completion.choices[0].message.parsed
-    if parsed is None:
-        raise GeminiAIError("Gemini did not return a usable SQL query.")
-    return parsed
+    except (httpx.TimeoutException, httpx.NetworkError) as exc:
+        raise GeminiAIError(
+            "The app could not reach the Gemini API within 30 seconds. Try again shortly."
+        ) from exc
+    except (KeyError, TypeError, ValueError, ValidationError) as exc:
+        raise GeminiAIError("Gemini did not return a usable SQL query.") from exc
