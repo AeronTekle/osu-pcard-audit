@@ -7,8 +7,7 @@
 The live app includes a 2010–2014 audit overview, targeted description and
 vendor searches, downloadable evidence, and a protected natural-language query
 workflow. The dashboard and common natural-language audit questions work without
-an API key. Optional Microsoft Azure OpenAI access expands the range of supported
-wording.
+an API key. Optional Google Gemini access expands the range of supported wording.
 
 This repository completes the P-card analytics mindset assignment:
 
@@ -32,19 +31,16 @@ streamlit run app.py
 ```
 
 The dashboard and built-in natural-language question patterns work without an API
-key. For unrestricted AI translation through Microsoft, supply the API key,
-endpoint, and deployment name from the same Azure OpenAI resource:
+key. For unrestricted AI translation through Google Gemini, supply the Gemini API
+key:
 
 ```bash
-export AZURE_OPENAI_API_KEY="your-key"
-export AZURE_OPENAI_ENDPOINT="https://YOUR-RESOURCE.openai.azure.com/"
-export AZURE_OPENAI_DEPLOYMENT="your-deployment-name"
+export GEMINI_API_KEY="your-key"
 streamlit run app.py
 ```
 
-`AZURE_OPENAI_DEPLOYMENT` must be the deployment name configured in Microsoft
-Azure, not merely a generic model-family name. A Copilot Studio web-channel
-secret is not an Azure OpenAI model API key.
+The app uses `gemini-3.8-flash` by default. If the school key is restricted to a
+different Gemini model, set its exact model code with `GEMINI_MODEL`.
 
 ## Deploy on Streamlit Community Cloud
 
@@ -53,16 +49,14 @@ secret is not an Azure OpenAI model API key.
 3. In the app's **Settings > Secrets**, add:
 
 ```toml
-AZURE_OPENAI_API_KEY = "your-key"
-AZURE_OPENAI_ENDPOINT = "https://YOUR-RESOURCE.openai.azure.com/"
-AZURE_OPENAI_DEPLOYMENT = "your-deployment-name"
+GEMINI_API_KEY = "your-key"
+# Optional only when the school specifies another model:
+GEMINI_MODEL = "gemini-3.8-flash"
 ```
 
-For compatibility, the app also recognizes the equivalent
-`MICROSOFT_COPILOT_API_KEY`, `MICROSOFT_COPILOT_ENDPOINT`, and
-`MICROSOFT_COPILOT_DEPLOYMENT` names. The standard Azure names above are
-recommended. An existing Microsoft key stored under the old `OPENAI_API_KEY`
-name is also accepted when the Azure endpoint and deployment values are present.
+For compatibility, the app also recognizes `GOOGLE_API_KEY` and
+`GOOGLE_GENAI_API_KEY`. `GEMINI_API_KEY` is recommended because it makes the
+provider explicit.
 
 Never commit `.streamlit/secrets.toml`, `.env`, or an API key. They are already
 excluded by `.gitignore`.
