@@ -58,6 +58,17 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(len(rows), 33)
         self.assertTrue((rows["Amount"] > 5000).all())
 
+    def test_highest_spender_question_runs_without_gemini(self):
+        answer = interpret_common_question(
+            "highest spender 2011", default_year=2014
+        )
+        self.assertIsNotNone(answer)
+        executed, rows = run_readonly_query(DB, answer.sql)
+        self.assertIn("Year = 2011", executed)
+        self.assertIn("LIMIT 1", executed)
+        self.assertEqual(len(rows), 1)
+        self.assertIn("FullName", rows.columns)
+
     def test_builtin_vendor_keyword_question(self):
         answer = interpret_common_question(
             "Search vendor for post office in 2014", default_year=2013
