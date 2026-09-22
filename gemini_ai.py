@@ -14,6 +14,7 @@ from pydantic import BaseModel, Field, ValidationError
 GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models"
 DEFAULT_GEMINI_MODEL = "gemini-3.5-flash-lite"
 RATE_LIMITED_GEMINI_MODELS = {"gemini-3.8-flash"}
+GEMINI_REQUEST_TIMEOUT_SECONDS = 60.0
 
 
 class SQLAnswer(BaseModel):
@@ -111,12 +112,20 @@ The application will add a display limit automatically.
             },
         }
         for attempt in range(3):
-            response = httpx.post(
-                url,
-                headers={"x-goog-api-key": config.api_key},
-                json=payload,
-                timeout=30.0,
-            )
+            try:
+                response = httpx.post(
+                    url,
+                    headers={"x-goog-api-key": config.api_key},
+                    json=payload,
+                    timeout=GEMINI_REQUEST_TIMEOUT_SECONDS,
+                )
+            except (httpx.TimeoutException, httpx.NetworkError):
+                # Retry one interrupted/slow request before showing an error. Limiting
+                # this to one retry avoids leaving the Streamlit form waiting forever.
+                if attempt == 0:
+                    time.sleep(1)
+                    continue
+                raise
             if response.status_code in {408, 429, 500, 502, 503, 504} and attempt < 2:
                 time.sleep(2**attempt)
                 continue
@@ -150,7 +159,7 @@ The application will add a display limit automatically.
         raise GeminiAIError(message) from exc
     except (httpx.TimeoutException, httpx.NetworkError) as exc:
         raise GeminiAIError(
-            "The app could not reach the Gemini API within 30 seconds. Try again shortly."
+            "The app could not reach the Gemini API after two attempts. Try again shortly."
         ) from exc
     except (KeyError, TypeError, ValueError, ValidationError) as exc:
         raise GeminiAIError("Gemini did not return a usable SQL query.") from exc
