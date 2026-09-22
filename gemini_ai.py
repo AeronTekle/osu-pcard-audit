@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import time
 from typing import Callable
 from urllib.parse import quote
 
@@ -98,22 +99,26 @@ The application will add a display limit automatically.
 
     try:
         url = f"{GEMINI_API_BASE_URL}/{quote(config.model, safe='')}:generateContent"
-        response = httpx.post(
-            url,
-            headers={"x-goog-api-key": config.api_key},
-            json={
-                "systemInstruction": {"parts": [{"text": instructions}]},
-                "contents": [
-                    {"role": "user", "parts": [{"text": question}]}
-                ],
-                "generationConfig": {
-                    "responseMimeType": "application/json",
-                    "responseSchema": SQLAnswer.model_json_schema(),
-                },
+        payload = {
+            "systemInstruction": {"parts": [{"text": instructions}]},
+            "contents": [{"role": "user", "parts": [{"text": question}]}],
+            "generationConfig": {
+                "responseMimeType": "application/json",
+                "responseSchema": SQLAnswer.model_json_schema(),
             },
-            timeout=30.0,
-        )
-        response.raise_for_status()
+        }
+        for attempt in range(3):
+            response = httpx.post(
+                url,
+                headers={"x-goog-api-key": config.api_key},
+                json=payload,
+                timeout=30.0,
+            )
+            if response.status_code in {408, 429, 500, 502, 503, 504} and attempt < 2:
+                time.sleep(2**attempt)
+                continue
+            response.raise_for_status()
+            break
         text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
         return SQLAnswer.model_validate_json(text)
     except httpx.HTTPStatusError as exc:
