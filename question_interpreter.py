@@ -94,12 +94,19 @@ LIMIT {limit}""",
             explanation=f"Ranks the {limit} vendors with the highest total amount in {year}.",
         )
 
-    if re.search(r"\b(employee|employees|cardholder|cardholders)\b", normalized) and (
+    cardholder_ranking = re.search(
+        r"\b(employee|employees|cardholder|cardholders)\b", normalized
+    ) and (
         re.search(r"\b(top|highest|largest|most)\b", normalized)
         or "spending by" in normalized
         or "spent by" in normalized
-    ):
-        limit = _limit(normalized, 100)
+    )
+    spender_ranking = re.search(r"\bspenders?\b", normalized) and re.search(
+        r"\b(top|highest|largest|most)\b", normalized
+    )
+    if cardholder_ranking or spender_ranking:
+        default_limit = 1 if re.search(r"\bspender\b", normalized) else 100
+        limit = _limit(normalized, default_limit)
         return BuiltInAnswer(
             sql=f"""SELECT FullName, COUNT(*) AS TransactionCount,
        ROUND(SUM(Amount), 2) AS TotalAmount
@@ -108,7 +115,7 @@ WHERE {scope}
 GROUP BY FullName
 ORDER BY TotalAmount DESC
 LIMIT {limit}""",
-            explanation=f"Summarizes {year} purchasing by cardholder, largest total first.",
+            explanation=f"Ranks {year} cardholders by total purchasing amount, largest first.",
         )
 
     if re.search(r"\b(month|monthly)\b", normalized) and re.search(
