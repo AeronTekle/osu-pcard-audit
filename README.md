@@ -39,7 +39,7 @@ export GEMINI_API_KEY="your-key"
 streamlit run app.py
 ```
 
-The app uses `gemini-3.8-flash` by default. If the school key is restricted to a
+The app uses `gemini-3.5-flash-lite` by default. If the school key is restricted to a
 different Gemini model, set its exact model code with `GEMINI_MODEL`.
 
 ## Deploy on Streamlit Community Cloud
@@ -51,7 +51,7 @@ different Gemini model, set its exact model code with `GEMINI_MODEL`.
 ```toml
 GEMINI_API_KEY = "your-key"
 # Optional only when the school specifies another model:
-GEMINI_MODEL = "gemini-3.8-flash"
+GEMINI_MODEL = "gemini-3.5-flash-lite"
 ```
 
 For compatibility, the app also recognizes `GOOGLE_API_KEY` and
