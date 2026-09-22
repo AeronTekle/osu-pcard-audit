@@ -58,6 +58,8 @@ class GeminiAIRequestTests(unittest.TestCase):
         openai_class.assert_called_once_with(
             api_key="test-key",
             base_url=GEMINI_OPENAI_BASE_URL,
+            timeout=30.0,
+            max_retries=1,
         )
         request = client.beta.chat.completions.parse.call_args.kwargs
         self.assertEqual(request["model"], "gemini-test-model")
@@ -76,6 +78,19 @@ class GeminiAIRequestTests(unittest.TestCase):
         with self.assertRaisesRegex(GeminiAIError, "rejected the Gemini API key") as raised:
             translate_question("A custom question", 2014, config)
         self.assertNotIn("sensitive provider response", str(raised.exception))
+
+    @patch("gemini_ai.OpenAI")
+    def test_google_invalid_key_bad_request_is_actionable(self, openai_class):
+        error = RuntimeError("API_KEY_INVALID")
+        error.status_code = 400
+        client = Mock()
+        client.beta.chat.completions.parse.side_effect = error
+        openai_class.return_value = client
+
+        with self.assertRaisesRegex(GeminiAIError, "rejected the Gemini API key"):
+            translate_question(
+                "A custom question", 2014, GeminiAIConfig(api_key="test-key")
+            )
 
     def test_missing_key_is_rejected_before_request(self):
         with self.assertRaisesRegex(GeminiAIError, "GEMINI_API_KEY"):
