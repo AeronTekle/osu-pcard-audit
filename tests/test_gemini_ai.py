@@ -1,9 +1,11 @@
 import unittest
 from unittest.mock import Mock, patch
 
+import httpx
+
 from gemini_ai import (
     DEFAULT_GEMINI_MODEL,
-    GEMINI_OPENAI_BASE_URL,
+    GEMINI_API_BASE_URL,
     GeminiAIConfig,
     GeminiAIError,
     SQLAnswer,
@@ -48,54 +50,66 @@ class GeminiAIConfigTests(unittest.TestCase):
 
 
 class GeminiAIRequestTests(unittest.TestCase):
-    @patch("gemini_ai.OpenAI")
-    def test_translation_uses_gemini_endpoint_and_model(self, openai_class):
+    @patch("gemini_ai.httpx.post")
+    def test_translation_uses_native_gemini_endpoint_and_model(self, post):
         parsed = SQLAnswer(
             sql="SELECT Vendor, SUM(Amount) AS Total FROM pcards GROUP BY Vendor",
             explanation="Totals by vendor.",
         )
-        client = Mock()
-        client.beta.chat.completions.parse.return_value = Mock(
-            choices=[Mock(message=Mock(parsed=parsed))]
-        )
-        openai_class.return_value = client
+        response = Mock()
+        response.json.return_value = {
+            "candidates": [
+                {"content": {"parts": [{"text": parsed.model_dump_json()}]}}
+            ]
+        }
+        post.return_value = response
         config = GeminiAIConfig(api_key="test-key", model="gemini-test-model")
 
         result = translate_question("Show totals by vendor", 2014, config)
 
-        openai_class.assert_called_once_with(
-            api_key="test-key",
-            base_url=GEMINI_OPENAI_BASE_URL,
-            timeout=30.0,
-            max_retries=1,
+        request = post.call_args
+        self.assertEqual(
+            request.args[0],
+            f"{GEMINI_API_BASE_URL}/gemini-test-model:generateContent",
         )
-        request = client.beta.chat.completions.parse.call_args.kwargs
-        self.assertEqual(request["model"], "gemini-test-model")
-        self.assertEqual(request["response_format"], SQLAnswer)
+        self.assertEqual(request.kwargs["headers"], {"x-goog-api-key": "test-key"})
+        self.assertEqual(
+            request.kwargs["json"]["generationConfig"]["responseMimeType"],
+            "application/json",
+        )
+        self.assertEqual(request.kwargs["timeout"], 30.0)
         self.assertEqual(result, parsed)
 
-    @patch("gemini_ai.OpenAI")
-    def test_authentication_error_is_safe_and_actionable(self, openai_class):
-        error = RuntimeError("sensitive provider response")
-        error.status_code = 401
-        client = Mock()
-        client.beta.chat.completions.parse.side_effect = error
-        openai_class.return_value = client
+    @patch("gemini_ai.httpx.post")
+    def test_authentication_error_is_safe_and_actionable(self, post):
+        request = httpx.Request("POST", GEMINI_API_BASE_URL)
+        response = httpx.Response(401, request=request)
+        post.side_effect = httpx.HTTPStatusError(
+            "sensitive provider response", request=request, response=response
+        )
         config = GeminiAIConfig(api_key="test-key")
 
         with self.assertRaisesRegex(GeminiAIError, "rejected the Gemini API key") as raised:
             translate_question("A custom question", 2014, config)
         self.assertNotIn("sensitive provider response", str(raised.exception))
 
-    @patch("gemini_ai.OpenAI")
-    def test_google_invalid_key_bad_request_is_actionable(self, openai_class):
-        error = RuntimeError("API_KEY_INVALID")
-        error.status_code = 400
-        client = Mock()
-        client.beta.chat.completions.parse.side_effect = error
-        openai_class.return_value = client
+    @patch("gemini_ai.httpx.post")
+    def test_google_invalid_key_bad_request_is_actionable(self, post):
+        request = httpx.Request("POST", GEMINI_API_BASE_URL)
+        response = httpx.Response(400, request=request)
+        post.side_effect = httpx.HTTPStatusError(
+            "API_KEY_INVALID", request=request, response=response
+        )
 
         with self.assertRaisesRegex(GeminiAIError, "rejected the Gemini API key"):
+            translate_question(
+                "A custom question", 2014, GeminiAIConfig(api_key="test-key")
+            )
+
+    @patch("gemini_ai.httpx.post")
+    def test_timeout_is_actionable(self, post):
+        post.side_effect = httpx.ReadTimeout("timed out")
+        with self.assertRaisesRegex(GeminiAIError, "within 30 seconds"):
             translate_question(
                 "A custom question", 2014, GeminiAIConfig(api_key="test-key")
             )
