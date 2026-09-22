@@ -11,8 +11,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 
 GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models"
-DEFAULT_GEMINI_MODEL = "gemini-3.5-flash-lite"
-LEGACY_GEMINI_MODELS = {"gemini-3.8-flash"}
+DEFAULT_GEMINI_MODEL = "gemini-3.8-flash"
 
 
 class SQLAnswer(BaseModel):
@@ -58,9 +57,7 @@ def load_gemini_config(get_value: Callable[[str], str]) -> GeminiAIConfig:
             api_key = value
             break
 
-    model = str(get_value("GEMINI_MODEL") or "").strip()
-    if not model or model in LEGACY_GEMINI_MODELS:
-        model = DEFAULT_GEMINI_MODEL
+    model = str(get_value("GEMINI_MODEL") or "").strip() or DEFAULT_GEMINI_MODEL
     return GeminiAIConfig(api_key=api_key, model=model)
 
 
