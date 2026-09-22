@@ -17,7 +17,7 @@ from db_utils import (
     run_readonly_query,
     search_transactions,
 )
-from microsoft_ai import SQLAnswer, load_microsoft_config, translate_question
+from gemini_ai import SQLAnswer, load_gemini_config, translate_question
 from question_interpreter import interpret_common_question
 
 
@@ -74,11 +74,11 @@ def question_to_sql(question: str, default_year: int) -> SQLAnswer:
     if built_in:
         return SQLAnswer(sql=built_in.sql, explanation=built_in.explanation)
 
-    config = load_microsoft_config(get_secret)
+    config = load_gemini_config(get_secret)
     if not config.configured:
         raise RuntimeError(
             "This wording is outside the built-in question patterns. Configure the "
-            "Microsoft Azure OpenAI/Copilot connection, or use one of the examples."
+            "Gemini API connection, or use one of the examples."
         )
     return translate_question(question, default_year, config)
 
@@ -407,23 +407,17 @@ with ask_tab:
         )
 
     st.write("")
-    microsoft_config = load_microsoft_config(get_secret)
+    gemini_config = load_gemini_config(get_secret)
     st.success(
         "Question mode is ready. The examples and common audit questions work without "
-        "tokens; Microsoft AI expands the range of wording.",
+        "tokens; Gemini expands the range of supported wording.",
         icon=":material/check_circle:",
     )
-    if microsoft_config.ready:
-        st.caption("Microsoft Azure OpenAI/Copilot translation is configured and ready.")
-    elif microsoft_config.configured:
-        st.warning(
-            "Microsoft AI setup is incomplete. Add these Streamlit Secrets: "
-            + ", ".join(microsoft_config.missing)
-            + "."
-        )
+    if gemini_config.ready:
+        st.caption(f"Gemini translation is configured and ready ({gemini_config.model}).")
     else:
         st.caption(
-            "Microsoft AI translation is not configured; built-in questions remain available."
+            "Gemini translation is not configured; built-in questions remain available."
         )
 
     examples = [
