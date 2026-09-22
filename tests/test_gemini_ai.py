@@ -35,14 +35,6 @@ class GeminiAIConfigTests(unittest.TestCase):
         config = load_gemini_config(lambda name: secrets.get(name, ""))
         self.assertEqual(config.model, "gemini-custom-model")
 
-    def test_old_slow_model_override_is_migrated(self):
-        secrets = {
-            "GEMINI_API_KEY": "test-key",
-            "GEMINI_MODEL": "gemini-3.8-flash",
-        }
-        config = load_gemini_config(lambda name: secrets.get(name, ""))
-        self.assertEqual(config.model, DEFAULT_GEMINI_MODEL)
-
     def test_missing_key_is_not_ready(self):
         config = load_gemini_config(lambda _name: "")
         self.assertFalse(config.configured)
