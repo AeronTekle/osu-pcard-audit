@@ -290,7 +290,7 @@
     ]
   },
   "qry_T2_Question5": {
-    "row_count": 48,
+    "row_count": 160,
     "first_10_rows": [
       {
         "Amount": 2249.6,
@@ -329,63 +329,63 @@
         "MCC": "CIVIC,SOCIAL AND FRATERNAL ASSOCIATIONS"
       },
       {
-        "Amount": 2544.07,
-        "FullName": "Employee 0D23D37B",
-        "Description": "EOS 6D DGTL CAM w/24-105mm Ea|EOS 6D DIGITAL CAM w",
-        "Vendor": "B & H PHOTO-VIDEO.COM",
-        "TransactionDate": "2/13/2014 0:00:00",
-        "PostedDate": "2/14/2014 0:00:00",
-        "MCC": "DIRCT MARKETING/DIRCT MARKETERS--NOT ELSEWHERE CLASSIFIED"
+        "Amount": 385.02,
+        "FullName": "Employee 223D3DE1",
+        "Description": "Dell 21.5 Monitor P2214H PCE|Dell Stereo USB Sound",
+        "Vendor": "DMI  DELL HIGHER EDUC",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/23/2014 0:00:00",
+        "MCC": "COMPUTERS, COMPUTER PERIPHERAL EQUIPMENT, SOFTWARE"
       },
       {
-        "Amount": 2544.07,
-        "FullName": "Employee 756042F4",
-        "Description": "EOS 6D DGTL CAM w/24-105mm Ea|EOS 6D DIGITAL CAM w",
-        "Vendor": "B & H PHOTO-VIDEO.COM",
-        "TransactionDate": "2/13/2014 0:00:00",
-        "PostedDate": "2/14/2014 0:00:00",
-        "MCC": "DIRCT MARKETING/DIRCT MARKETERS--NOT ELSEWHERE CLASSIFIED"
+        "Amount": 770.04,
+        "FullName": "Employee 223D3DE1",
+        "Description": "Dell 21.5 Monitor P2214H PCE|Dell Stereo USB Sound",
+        "Vendor": "DMI  DELL HIGHER EDUC",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/23/2014 0:00:00",
+        "MCC": "COMPUTERS, COMPUTER PERIPHERAL EQUIPMENT, SOFTWARE"
       },
       {
-        "Amount": 2973.0,
-        "FullName": "Employee 51914657",
+        "Amount": 2262.0,
+        "FullName": "Employee 223D3DE1",
+        "Description": "OptiPlex 9020 Mini Tower PCE",
+        "Vendor": "DMI  DELL HIGHER EDUC",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/23/2014 0:00:00",
+        "MCC": "COMPUTERS, COMPUTER PERIPHERAL EQUIPMENT, SOFTWARE"
+      },
+      {
+        "Amount": 4386.56,
+        "FullName": "Employee C98F592C",
+        "Description": "ProSupport: 4-Hour 7x24 On PCE|ProSupport Plus: 7x",
+        "Vendor": "DMI  DELL HIGHER EDUC",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/23/2014 0:00:00",
+        "MCC": "COMPUTERS, COMPUTER PERIPHERAL EQUIPMENT, SOFTWARE"
+      },
+      {
+        "Amount": 329.0,
+        "FullName": "Employee 321F62EF",
         "Description": "GENERAL PURCHASE",
-        "Vendor": "EEI",
-        "TransactionDate": "2/14/2014 0:00:00",
-        "PostedDate": "2/17/2014 0:00:00",
-        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+        "Vendor": "Business World Inc",
+        "TransactionDate": "2/11/2014 0:00:00",
+        "PostedDate": "2/12/2014 0:00:00",
+        "MCC": "STATIONERY, OFFICE SUPPLIES, PRINTING AND WRITING PAPER"
       },
       {
-        "Amount": 3196.0,
-        "FullName": "Employee B1FA2F0D",
+        "Amount": 184.0,
+        "FullName": "Employee 321F62EF",
         "Description": "GENERAL PURCHASE",
-        "Vendor": "EEI",
-        "TransactionDate": "2/14/2014 0:00:00",
-        "PostedDate": "2/17/2014 0:00:00",
-        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
-      },
-      {
-        "Amount": 4999.35,
-        "FullName": "Employee 51914657",
-        "Description": "GENERAL PURCHASE",
-        "Vendor": "THE LEE COMPANY",
-        "TransactionDate": "3/19/2014 0:00:00",
-        "PostedDate": "3/20/2014 0:00:00",
-        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
-      },
-      {
-        "Amount": 503.04,
-        "FullName": "Employee C53C5224",
-        "Description": "GENERAL PURCHASE",
-        "Vendor": "THE LEE COMPANY",
-        "TransactionDate": "3/19/2014 0:00:00",
-        "PostedDate": "3/20/2014 0:00:00",
-        "MCC": "HEATING,PLUMBING,AND AIR CONDITIONING CONTRACTORS"
+        "Vendor": "Business World Inc",
+        "TransactionDate": "2/11/2014 0:00:00",
+        "PostedDate": "2/12/2014 0:00:00",
+        "MCC": "STATIONERY, OFFICE SUPPLIES, PRINTING AND WRITING PAPER"
       }
     ]
   },
   "qry_T2_Question6": {
-    "row_count": 122,
+    "row_count": 164,
     "first_10_rows": [
       {
         "Amount": 4883.77,
@@ -424,63 +424,63 @@
         "MCC": "PROFESSIONAL SERVICES NOT ELSEWHERE CLASSIFIED"
       },
       {
-        "Amount": 2789.0,
-        "FullName": "Employee D8983D5C",
-        "Description": "GENERAL PURCHASE",
-        "Vendor": "SAGE PUBLICATIONS",
-        "TransactionDate": "2/4/2014 0:00:00",
-        "PostedDate": "2/5/2014 0:00:00",
-        "MCC": "NEWS DEALERS AND NEWSSTANDS"
+        "Amount": 385.02,
+        "FullName": "Employee 223D3DE1",
+        "Description": "Dell 21.5 Monitor P2214H PCE|Dell Stereo USB Sound",
+        "Vendor": "DMI  DELL HIGHER EDUC",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/23/2014 0:00:00",
+        "MCC": "COMPUTERS, COMPUTER PERIPHERAL EQUIPMENT, SOFTWARE"
       },
       {
-        "Amount": 3250.0,
-        "FullName": "Employee D8983D5C",
-        "Description": "GENERAL PURCHASE",
-        "Vendor": "SQ  ARTISAN WINDOW CLEANI",
-        "TransactionDate": "2/4/2014 0:00:00",
-        "PostedDate": "2/5/2014 0:00:00",
-        "MCC": "MISCELLANEOUS PERSONAL SERVICES--NOT ELSEWHERE CLASSIFIED"
+        "Amount": 770.04,
+        "FullName": "Employee 223D3DE1",
+        "Description": "Dell 21.5 Monitor P2214H PCE|Dell Stereo USB Sound",
+        "Vendor": "DMI  DELL HIGHER EDUC",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/23/2014 0:00:00",
+        "MCC": "COMPUTERS, COMPUTER PERIPHERAL EQUIPMENT, SOFTWARE"
       },
       {
-        "Amount": 5000.0,
-        "FullName": "Employee 1BCC5E9A",
-        "Description": "GENERAL PURCHASE",
-        "Vendor": "I2E INC",
-        "TransactionDate": "2/14/2014 0:00:00",
-        "PostedDate": "2/17/2014 0:00:00",
-        "MCC": "CHARITABLE AND SOCIAL SERVICE ORGANIZATIONS"
+        "Amount": 2262.0,
+        "FullName": "Employee 223D3DE1",
+        "Description": "OptiPlex 9020 Mini Tower PCE",
+        "Vendor": "DMI  DELL HIGHER EDUC",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/23/2014 0:00:00",
+        "MCC": "COMPUTERS, COMPUTER PERIPHERAL EQUIPMENT, SOFTWARE"
       },
       {
-        "Amount": 2.8,
-        "FullName": "Employee 1BCC5E9A",
+        "Amount": 3212.0,
+        "FullName": "Employee 223D3DE1",
         "Description": "GENERAL PURCHASE",
-        "Vendor": "PIKEPASS RECYCLING",
-        "TransactionDate": "2/14/2014 0:00:00",
-        "PostedDate": "2/17/2014 0:00:00",
-        "MCC": "TOLLS AND BRIDGE FEES"
+        "Vendor": "HFE INTERNATIONAL",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/24/2014 0:00:00",
+        "MCC": "MISCELLANEOUS AND SPECIALTY RETAIL STORES"
       },
       {
-        "Amount": 350.0,
-        "FullName": "Employee 302B04AF",
+        "Amount": 250.77,
+        "FullName": "Employee 8E374083",
         "Description": "GENERAL PURCHASE",
-        "Vendor": "ACADEMIC IMPRESSIONS INC",
-        "TransactionDate": "2/18/2014 0:00:00",
-        "PostedDate": "2/19/2014 0:00:00",
-        "MCC": "SCHOOLS AND EDUCATIONAL SERVICES NOT ELSEWHERE CLASSIFIED"
+        "Vendor": "ALL AMERICAN MEDICAL",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/24/2014 0:00:00",
+        "MCC": "MISCELLANEOUS AND SPECIALTY RETAIL STORES"
       },
       {
-        "Amount": 4837.56,
-        "FullName": "Employee 302B04AF",
-        "Description": "ROOM CHARGES",
-        "Vendor": "HYATT PLACE SAN ANTONIO/W",
-        "TransactionDate": "2/18/2014 0:00:00",
-        "PostedDate": "2/20/2014 0:00:00",
-        "MCC": "HYATT PLACE"
+        "Amount": 1741.05,
+        "FullName": "Employee 8E374083",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "MIKE'S MEDICAL",
+        "TransactionDate": "1/23/2014 0:00:00",
+        "PostedDate": "1/24/2014 0:00:00",
+        "MCC": "DENTAL/LABORATORY/MEDICAL/OPHTHALMIC HOSP EQIP AND SUP."
       }
     ]
   },
   "qry_T2_Question7": {
-    "row_count": 244,
+    "row_count": 289,
     "first_10_rows": [
       {
         "Amount": 93.79,
@@ -519,6 +519,15 @@
         "MCC": "FAST FOOD RESTAURANTS"
       },
       {
+        "Amount": 29.88,
+        "FullName": "Employee 143A2323",
+        "Description": "GENERAL PURCHASE",
+        "Vendor": "FOOD PYRAMID #69",
+        "TransactionDate": "3/8/2014 0:00:00",
+        "PostedDate": "3/10/2014 0:00:00",
+        "MCC": "GROCERY STORES,AND SUPERMARKETS"
+      },
+      {
         "Amount": 35.0,
         "FullName": "Employee 143A2323",
         "Description": "GENERAL PURCHASE",
@@ -526,15 +535,6 @@
         "TransactionDate": "3/8/2014 0:00:00",
         "PostedDate": "3/10/2014 0:00:00",
         "MCC": "FAST FOOD RESTAURANTS"
-      },
-      {
-        "Amount": 103.95,
-        "FullName": "Employee 143A2323",
-        "Description": "ROOM CHARGES",
-        "Vendor": "MICROTEL INN",
-        "TransactionDate": "3/8/2014 0:00:00",
-        "PostedDate": "3/10/2014 0:00:00",
-        "MCC": "MICROTEL INN AND SUITES"
       },
       {
         "Amount": 103.95,
