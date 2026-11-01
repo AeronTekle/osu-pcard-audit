@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import re
 import time
 from typing import Callable
 from urllib.parse import quote
@@ -49,6 +50,46 @@ SECRET_ALIASES = (
     "GOOGLE_API_KEY",
     "GOOGLE_GENAI_API_KEY",
 )
+
+_NUMBER_WORDS = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+    "twenty": 20,
+    "fifty": 50,
+    "hundred": 100,
+}
+_REQUESTED_LIMIT = re.compile(
+    r"\b(?:top|first|largest|highest|rank(?:\s+the)?)\s+"
+    r"(?:the\s+)?(?P<count>\d{1,3}|one|two|three|four|five|six|seven|"
+    r"eight|nine|ten|twenty|fifty|hundred)\b",
+    re.IGNORECASE,
+)
+
+
+def apply_requested_limit(question: str, answer: SQLAnswer) -> SQLAnswer:
+    """Make an explicit top/rank count deterministic instead of model-dependent."""
+    match = _REQUESTED_LIMIT.search(question)
+    if not match:
+        return answer
+
+    token = match.group("count").lower()
+    requested = int(token) if token.isdigit() else _NUMBER_WORDS[token]
+    requested = max(1, min(requested, 500))
+
+    sql_without_final_limit = re.sub(
+        r"\s+LIMIT\s+\d+\s*$", "", answer.sql.strip(), flags=re.IGNORECASE
+    )
+    return answer.model_copy(
+        update={"sql": f"{sql_without_final_limit}\nLIMIT {requested}"}
+    )
 
 
 def load_gemini_config(get_value: Callable[[str], str]) -> GeminiAIConfig:
@@ -98,7 +139,9 @@ Use case-insensitive matching with lower(...) and LIKE when searching text.
 Use COALESCE for nullable text. Prefer explicit columns rather than SELECT *.
 If the user does not specify a year, use {int(default_year)}.
 If the user does not ask for a different order, show the largest amounts first.
-The application will add a display limit automatically.
+If the user asks for a specific top, first, highest, largest, or ranked count,
+end the query with LIMIT set to that exact count.
+The application will add a display limit automatically when no count is requested.
 """.strip()
 
     try:
@@ -132,7 +175,8 @@ The application will add a display limit automatically.
             response.raise_for_status()
             break
         text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
-        return SQLAnswer.model_validate_json(text)
+        answer = SQLAnswer.model_validate_json(text)
+        return apply_requested_limit(question, answer)
     except httpx.HTTPStatusError as exc:
         status = exc.response.status_code
         if status in {400, 401, 403}:
