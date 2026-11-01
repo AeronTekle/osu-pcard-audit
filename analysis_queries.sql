@@ -71,8 +71,7 @@ WITH flagged AS (
       AND AgencyName = 'OKLAHOMA STATE UNIVERSITY'
       AND Amount > 0
     GROUP BY Vendor, TransactionDate
-    HAVING COUNT(*) = 2
-       AND COUNT(DISTINCT FullName) = 2
+    HAVING COUNT(DISTINCT FullName) = 2
        AND SUM(Amount) > 5000
 )
 SELECT p.Amount, p.FullName, p.Description, p.Vendor,
@@ -100,8 +99,7 @@ WITH flagged AS (
       AND AgencyName = 'OKLAHOMA STATE UNIVERSITY'
       AND Amount > 0
     GROUP BY FullName, TransactionDate
-    HAVING COUNT(*) = 2
-       AND COUNT(DISTINCT Vendor) = 2
+    HAVING COUNT(DISTINCT Vendor) = 2
        AND SUM(Amount) > 5000
 )
 SELECT p.Amount, p.FullName, p.Description, p.Vendor,
@@ -145,12 +143,6 @@ JOIN matched_days AS d
  AND p.TransactionDate = d.TransactionDate
 WHERE p.Year = 2014
   AND p.AgencyName = 'OKLAHOMA STATE UNIVERSITY'
-  AND (lower(p.MCC) LIKE '%hotel%'
-       OR lower(p.MCC) LIKE '%motel%'
-       OR lower(p.MCC) LIKE '%resort%'
-       OR lower(p.MCC) LIKE '%inn%'
-       OR lower(p.MCC) LIKE '%food%'
-       OR lower(p.MCC) LIKE '%restaurant%')
 ORDER BY p.FullName ASC, p.Amount ASC;
 
 -- Student-defined internal-control tests
@@ -429,3 +421,4 @@ FROM employee_vendor AS e
 JOIN vendor_totals AS v ON v.Vendor = e.Vendor
 WHERE e.EmployeeVendorTotal / v.VendorTotal >= 0.80
 ORDER BY EmployeeSharePercentage DESC, EmployeeVendorTotal DESC;
+
