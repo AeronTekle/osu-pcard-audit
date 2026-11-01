@@ -82,6 +82,34 @@ class GeminiAIRequestTests(unittest.TestCase):
         self.assertEqual(result, parsed)
 
     @patch("gemini_ai.httpx.post")
+    def test_explicit_rank_count_overrides_model_display_limit(self, post):
+        parsed = SQLAnswer(
+            sql=(
+                "SELECT Vendor, SUM(Amount) AS TotalAmount FROM pcards "
+                "WHERE Year = 2014 GROUP BY Vendor "
+                "ORDER BY TotalAmount DESC LIMIT 500"
+            ),
+            explanation="Ranks vendors by total amount.",
+        )
+        response = Mock(status_code=200)
+        response.json.return_value = {
+            "candidates": [
+                {"content": {"parts": [{"text": parsed.model_dump_json()}]}}
+            ]
+        }
+        post.return_value = response
+
+        result = translate_question(
+            "In calendar 2014, rank the five counterparties by aggregate "
+            "charged value, highest first.",
+            2014,
+            GeminiAIConfig(api_key="test-key"),
+        )
+
+        self.assertTrue(result.sql.endswith("LIMIT 5"))
+        self.assertNotIn("LIMIT 500", result.sql)
+
+    @patch("gemini_ai.httpx.post")
     def test_authentication_error_is_safe_and_actionable(self, post):
         request = httpx.Request("POST", GEMINI_API_BASE_URL)
         response = httpx.Response(401, request=request)
